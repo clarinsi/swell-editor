@@ -139,6 +139,13 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       )
     }
 
+    const is_expanded = (g: Object) => {
+      if ('is_expanded' in g) {
+        return g['is_expanded']
+      }
+      return false
+    }
+
     const list = Utils.expr(() => {
       let c = 0
       return (
@@ -147,15 +154,32 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
             selected.filter(isDigit).map(i => <li key={'d' + i}>{entry_span(i + '')}</li>)}
           {taxonomy.map((g, i) => (
             <li key={i}>
-              <b>{g.group}</b>
+              <b>
+              <span
+                className={'entry'}
+                onMouseOver={evt => {
+                  // Only on mouse move, not when triggered by scroll.
+                  if (c && (!evt || evt.nativeEvent.movementX || evt.nativeEvent.movementY))
+                    this.setState({cursor: c})
+                }}
+                onMouseDown={e => {
+                  g['is_expanded'] = !g['is_expanded']
+                  props.onChange('', false)
+                  e.preventDefault()
+                }}>
+                {is_expanded(g) ? '- ' + g.group : '+ ' + g.group}
+              </span>
+              </b>
               <ul>
-                {g.entries.map((e, i) => {
+                {is_expanded(g) ?
+                  g.entries.map((e, i) => {
                   return (
                     <li ref={'tax_item' + c} key={i} title={e.desc}>
                       {entry_span(e.label, c++)}
                     </li>
                   )
-                })}
+                }
+               ) : ''}
               </ul>
             </li>
           ))}
@@ -296,6 +320,7 @@ export function LabelSidekick({
             !disabled &&
             Model.validation_transaction(store, store =>
               advance(() => {
+                label == '' ? Model.updateDropdown(store, selected) :
                 Model.setLabel(store, selected, label, value)
               })
             )

@@ -40,6 +40,7 @@ export const label_args: Record<string, number> = {
 
 export type TaxonomyGroup = {
   group: string
+  is_expanded: boolean,
   entries: {
     label: string
     desc: string
@@ -84,6 +85,7 @@ export const label_sort: Comparator<string> = chain_cmps(
 const anonymization: Taxonomy = [
   {
     group: 'Morphology',
+    is_expanded: true,
     entries: [
       {label: 'gen', desc: 'genitive'},
       {label: 'def', desc: 'definite'},
@@ -92,6 +94,7 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Names',
+    is_expanded: true,
     entries: [
       {label: 'firstname_male', desc: ''},
       {label: 'firstname_female', desc: ''},
@@ -103,6 +106,7 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Geographic data',
+    is_expanded: true,
     entries: [
       {label: 'foreign', desc: ''},
       {label: 'area', desc: ''},
@@ -117,6 +121,7 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Institutions',
+    is_expanded: true,
     entries: [
       {label: 'school', desc: ''},
       {label: 'work', desc: ''},
@@ -125,6 +130,7 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Transportation',
+    is_expanded: true,
     entries: [
       {label: 'transport_name', desc: 'bus, metro, tram, train, express'},
       {label: 'transport_nr', desc: 'number, color'},
@@ -132,10 +138,12 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Age',
+    is_expanded: true,
     entries: [{label: 'age_digits', desc: ''}, {label: 'age_string', desc: ''}],
   },
   {
     group: 'Dates',
+    is_expanded: true,
     entries: [
       {label: 'date_digits', desc: 'numerical date represenation, delimiters are retained'},
       {label: 'day', desc: ''},
@@ -146,6 +154,7 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Misc',
+    is_expanded: true,
     entries: [
       {label: 'account_nr', desc: ''},
       {label: 'email', desc: ''},
@@ -159,6 +168,7 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Mark',
+    is_expanded: true,
     entries: [
       {label: 'edu', desc: 'education, courses'},
       {label: 'fam', desc: 'family members'},
@@ -168,6 +178,7 @@ const anonymization: Taxonomy = [
   },
   {
     group: 'Other',
+    is_expanded: true,
     entries: [
       {label: 'Cit-FL', desc: 'Citation for a language'},
       {label: 'Com!', desc: 'Comment'},
@@ -179,9 +190,10 @@ const anonymization: Taxonomy = [
 export const normalization: Taxonomy = [
   {
     group: 'Other',
+    is_expanded: true,
     entries: [
       {
-        label: 'Cit-FL',
+        label: 'Cit-FLasdasd',
         desc: 'Citation for a language'
   },
   {
@@ -204,6 +216,7 @@ export const normalization: Taxonomy = [
 export const correctannot: Taxonomy = [
   {
     group: 'Orthographic',
+    is_expanded: true,
     entries: [
       {
         label: 'O',
@@ -221,6 +234,7 @@ export const correctannot: Taxonomy = [
   },
   {
     group: 'Lexical',
+    is_expanded: true,
     entries: [
       {
         label: 'L-Der',
@@ -243,6 +257,7 @@ export const correctannot: Taxonomy = [
   },
   {
     group: 'Morphological',
+    is_expanded: true,
     entries: [
       {
         label: 'M-Adj/adv',
@@ -266,6 +281,7 @@ export const correctannot: Taxonomy = [
   },
   {
     group: 'Punctuation',
+    is_expanded: true,
     entries: [
       {
         label: 'P-M',
@@ -287,6 +303,7 @@ export const correctannot: Taxonomy = [
   },
   {
     group: 'Syntactical',
+    is_expanded: true,
     entries: [
       {
         label: 'S-Adv',
@@ -338,6 +355,7 @@ export const correctannot: Taxonomy = [
   },
   {
     group: 'Other',
+    is_expanded: true,
     entries: [
       {
         label: 'C',

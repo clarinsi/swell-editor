@@ -1255,6 +1255,11 @@ export function is_comment_label(label: string): boolean {
   g3.edges['e-s0-t0'].labels // => ['ABC', 'DEF']
 
 */
+export function update_dropdown(g: Graph) {
+  const store = Store.init(g)
+  return store.get()
+}
+
 export function modify_labels(g: Graph, edge_id: string, k: (labels: string[]) => string[]): Graph {
   const store = Store.init(g)
   const edge = edge_store(store, edge_id)

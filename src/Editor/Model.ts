@@ -572,6 +572,14 @@ export function make_history_advance_function(store: Store<State>) {
     })
 }
 
+export function updateDropdown(store: Store<State>, token_ids: string[]) {
+  const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
+  const graph = graphStore(store)
+  const edge_ids = edges.map(e => e.id)
+
+  edge_ids.forEach(id => graph.modify(g => G.update_dropdown(g)))
+}
+
 export function setLabel(store: Store<State>, token_ids: string[], label: string, value: boolean) {
   const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
   const graph = graphStore(store)
