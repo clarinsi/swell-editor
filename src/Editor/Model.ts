@@ -215,18 +215,20 @@ export type Show =
   | 'target_text'
   | 'options'
 
-export type Mode = 'anonymization' | 'normalization' | 'correctannot'
+export type Mode = 'anonymization' | 'normalization' | 'correctannot' | 'correctannot_slo'
 
 export const modes: Record<Mode, Mode> = {
   anonymization: 'anonymization',
   normalization: 'normalization',
   correctannot: 'correctannot',
+  correctannot_slo: 'correctannot_slo',
 }
 
 export function mode_label(mode: Mode): string {
   return {
     [modes.anonymization]: 'pseudonymization',
     [modes.normalization]: 'normalization',
+    [modes.correctannot_slo]: 'correction annotation Slovenian',
     [modes.correctannot]: 'correction annotation',
   }[mode]
 }
@@ -580,11 +582,42 @@ export function updateDropdown(store: Store<State>, token_ids: string[]) {
   edge_ids.forEach(id => graph.modify(g => G.update_dropdown(g)))
 }
 
-export function setLabel(store: Store<State>, token_ids: string[], label: string, value: boolean) {
+export function updateGraph(store: Store<State>, token_ids: string[]) {
   const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
   const graph = graphStore(store)
   const edge_ids = edges.map(e => e.id)
   const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
+  
+  // const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
+  // const graph = graphStore(store)
+  // graph.modify()
+  // const edge_ids = edges.map(e => e.id)
+  // const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
+
+  console.log('HERE')
+
+  // Add/remove label.
+  // For numbers and main anon labels, replace existing ones.
+  // const replace_conds = [
+  //   (x: string) => /^\d+$/.test(x),
+  //   (x: string) => taxonomy_has_label(modes.anonymization, x) && label_order(x) == LabelOrder.BASE,
+  // ]
+  // const replace_cond = replace_conds.find(cond => cond(t.key))
+  // const single_set_label = (labels: string[]) =>
+  //   replace_cond
+  //     ? labels.filter(l => !replace_cond(l)).concat(value ? [t.key] : [])
+  //     : Utils.set_modify(labels, t.key, value)
+  // edge_ids.forEach(id => graph.modify(g => G.modify_labels(g, id, single_set_label)))
+}
+
+
+export function setLabel(store: Store<State>, token_ids: string[], t: { label: string; key: string; desc: string; }, value: boolean) {
+  const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
+  const graph = graphStore(store)
+  const edge_ids = edges.map(e => e.id)
+  const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
+
+  console.log('HERE')
 
   // Add/remove label.
   // For numbers and main anon labels, replace existing ones.
@@ -592,16 +625,16 @@ export function setLabel(store: Store<State>, token_ids: string[], label: string
     (x: string) => /^\d+$/.test(x),
     (x: string) => taxonomy_has_label(modes.anonymization, x) && label_order(x) == LabelOrder.BASE,
   ]
-  const replace_cond = replace_conds.find(cond => cond(label))
+  const replace_cond = replace_conds.find(cond => cond(t.key))
   const single_set_label = (labels: string[]) =>
     replace_cond
-      ? labels.filter(l => !replace_cond(l)).concat(value ? [label] : [])
-      : Utils.set_modify(labels, label, value)
+      ? labels.filter(l => !replace_cond(l)).concat(value ? [t.key] : [])
+      : Utils.set_modify(labels, t.key, value)
   edge_ids.forEach(id => graph.modify(g => G.modify_labels(g, id, single_set_label)))
 
   // Auto-group consecutive tokens in anonymization.
   if (store.get().mode == 'anonymization') {
-    if (value && label_order(label) == LabelOrder.BASE) {
+    if (value && label_order(t.key) == LabelOrder.BASE) {
       // When adding a main label, also connect the selected tokens.
       graph.modify(g =>
         G.group_consecutive(g, edges, 'source').reduce(
@@ -623,7 +656,7 @@ export function setLabel(store: Store<State>, token_ids: string[], label: string
         const match = Object.keys(
           record.filter(nem, nes => nes.some(ne => edge_source(ne) == edge_source(e)))
         )[0]
-        label_args[label] ||
+        label_args[t.key] ||
           graph.modify(g => G.modify_labels(g, e.id, l => [...l, String(match ? match : ++maxnum)]))
       })
     } else if (!value && labels.length <= 1) {
@@ -653,6 +686,7 @@ export type ActionOnSelected =
 export const actionButtons: Record<Mode, ActionOnSelected[]> = {
   normalization: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto', 'revert'],
   correctannot: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
+  correctannot_slo: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
   anonymization: ['prev', 'next', 'prev_mod', 'next_mod'],
 }
 

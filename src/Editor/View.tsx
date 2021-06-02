@@ -12,7 +12,7 @@ import {Close, Button, VNode} from '../ReactUtils'
 import * as Model from './Model'
 import {DropZone} from './DropZone'
 import * as CM from './CodeMirror'
-import {config, label_sort, taxonomy_has_label, label_taxonomy, label_args} from './Config'
+import {config, label_sort, taxonomy_has_label, label_taxonomy, label_args, taxonomy_is_expanded} from './Config'
 import {configSwell} from './swellData'
 
 import * as EditorTypes from '../EditorTypes'
@@ -339,6 +339,8 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
     const label_mode = (mode: string, label: string) =>
       G.is_comment_label(label) ||
       (mode == Model.modes.anonymization ? is_anon_label(label) : taxonomy_has_label(mode, label))
+    const label_expanded = (mode: string, label: string) =>
+      taxonomy_is_expanded(mode, label)
 
     return (
       <div className="content">
@@ -379,6 +381,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
             selectedIds={Object.keys(state.selected)}
             generation={state.generation}
             labelMode={label_mode}
+            labelExpanded={label_expanded}
             labelSort={label_sort}
             onSelect={(ids, only) => Model.onSelect(store, ids, only)}
           />
@@ -555,6 +558,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               {mode_switcher(Model.modes.anonymization, true)}
               {mode_switcher(Model.modes.normalization)}
               {mode_switcher(Model.modes.correctannot)}
+              {mode_switcher(Model.modes.correctannot_slo)}
               <hr />
               {toggle_button('graph')}
               {toggle_button('diff')}

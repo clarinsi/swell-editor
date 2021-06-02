@@ -9,7 +9,7 @@ import * as record from '../record'
 import * as ReactUtils from '../ReactUtils'
 
 import * as Model from './Model'
-import {Taxonomy} from './Config'
+import {Taxonomy, TaxonomyGroup} from './Config'
 
 const LabelSidekickStyle = style({
   ...Utils.debugName('LabelSidekickStyle'),
@@ -56,7 +56,8 @@ const LabelSidekickStyle = style({
 interface DropdownProps {
   taxonomy: Taxonomy
   selected: string[]
-  onChange(label: string, value: boolean): void
+  onChange(t: { label: string; key: string; desc: string; }, value: boolean): void
+  updateGraph(): void
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
   mode: Model.Mode
   extraInput?: {get: () => string | undefined; set: (value: string) => void}
@@ -87,19 +88,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       return /^\d+$/.test(l)
     }
 
-    function set(l: string) {
-      props.onChange(l, true)
+    function set(t: { label: string; key: string; desc: string; }) {
+      props.onChange(t, true)
     }
 
-    function unset(l: string) {
-      props.onChange(l, false)
+    function unset(t: { label: string; key: string; desc: string; }) {
+      props.onChange(t, false)
     }
 
-    function toggle(l: string) {
-      if (isSelected(l)) {
-        unset(l)
+    function toggle(t: { label: string; key: string; desc: string; }, ) {
+      if (isSelected(t.key)) {
+        unset(t)
       } else {
-        set(l)
+        set(t)
       }
     }
 
@@ -120,8 +121,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
     const liberal_re = (s: string) => new RegExp('^' + s.split('').join('-?'), 'i')
 
-    const entry_span = (label: string, c?: number) => {
-      const classes = (cursor == c ? ' cursor' : '') + (isSelected(label) ? ' selected' : '')
+    const entry_span = (t: { label: string; key: string; desc: string; }, c?: number) => {
+      const classes = (cursor == c ? ' cursor' : '') + (isSelected(t.key) ? ' selected' : '')
       return (
         <span
           className={'entry' + classes}
@@ -131,17 +132,25 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
               this.setState({cursor: c})
           }}
           onMouseDown={e => {
-            toggle(label)
+            toggle(t)
             e.preventDefault()
           }}>
-          {label}
+          {t.label}
         </span>
       )
     }
 
-    const is_expanded = (g: Object) => {
+    const is_expanded = (g: TaxonomyGroup) => {
       if ('is_expanded' in g) {
-        return g['is_expanded']
+        return g.is_expanded
+      }
+      return false
+    }
+
+    const has_subgroups = (g: TaxonomyGroup) => {
+      if ('subgroups' in g) {
+        return g.subgroups.length > 0
+        // return false
       }
       return false
     }
@@ -151,35 +160,70 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       return (
         <ul className="taxonomy" ref="taxonomy">
           {props.mode == Model.modes.anonymization &&
-            selected.filter(isDigit).map(i => <li key={'d' + i}>{entry_span(i + '')}</li>)}
+            selected.filter(isDigit).map(i => <li key={'d' + i}>{entry_span({ label: i + '', key: i + '', desc: ''})}</li>)}
           {taxonomy.map((g, i) => (
             <li key={i}>
               <b>
-              <span
-                className={'entry'}
-                onMouseOver={evt => {
-                  // Only on mouse move, not when triggered by scroll.
-                  if (c && (!evt || evt.nativeEvent.movementX || evt.nativeEvent.movementY))
-                    this.setState({cursor: c})
-                }}
-                onMouseDown={e => {
-                  g['is_expanded'] = !g['is_expanded']
-                  props.onChange('', false)
-                  e.preventDefault()
-                }}>
-                {is_expanded(g) ? '- ' + g.group : '+ ' + g.group}
-              </span>
+                <span
+                  className={'entry'}
+                  onMouseOver={evt => {
+                    // Only on mouse move, not when triggered by scroll.
+                    if (c && (!evt || evt.nativeEvent.movementX || evt.nativeEvent.movementY))
+                      this.setState({cursor: c})
+                  }}
+                  onMouseDown={e => {
+                    g.is_expanded = !g.is_expanded
+                    this.forceUpdate()
+                    props.updateGraph()
+                    e.preventDefault()
+                  }}>
+                  {is_expanded(g) ? '- ' + g.group : '+ ' + g.group}
+                </span>
               </b>
               <ul>
-                {is_expanded(g) ?
-                  g.entries.map((e, i) => {
-                  return (
-                    <li ref={'tax_item' + c} key={i} title={e.desc}>
-                      {entry_span(e.label, c++)}
-                    </li>
-                  )
+                {
+                  has_subgroups(g) ? 
+                    is_expanded(g) ?
+                      g.subgroups.map((sg, j) => { return(
+                        <li key={'i' + i + 'j' + j}>
+                          <b>
+                            <span
+                              className={'entry'}
+                              onMouseOver={evt => {
+                                // Only on mouse move, not when triggered by scroll.
+                                if (c && (!evt || evt.nativeEvent.movementX || evt.nativeEvent.movementY))
+                                  this.setState({cursor: c})
+                              }}
+                              onMouseDown={e => {
+                                sg['is_expanded'] = !sg['is_expanded']
+                                this.forceUpdate()
+                                e.preventDefault()
+                              }}>
+                              {is_expanded(sg) ? '- ' + sg.group : '+ ' + sg.group}
+                            </span>
+                          </b>
+                          <ul>
+                            {is_expanded(sg) ?
+                              sg.entries.map((e, i) => {
+                                return (
+                                  <li ref={'tax_item' + c} key={i} title={e.desc}>
+                                    {entry_span(e, c++)}
+                                  </li>
+                                )
+                              }) : '' 
+                            }
+                          </ul>
+                        </li> )}) : ''
+                    :
+                    is_expanded(g) ?
+                      g.entries.map((e, i) => {
+                        return (
+                          <li ref={'tax_item' + c} key={i} title={e.desc}>
+                            {entry_span(e, c++)}
+                          </li>
+                        )
+                      }) : ''
                 }
-               ) : ''}
               </ul>
             </li>
           ))}
@@ -224,16 +268,16 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
               this.props.extraInput.set(t.value)
               t.value = ''
             } else if (isDigit(t.value)) {
-              toggle(t.value)
+              toggle({ label: t.value, key: t.value, desc: ''})
               t.value = ''
             } else {
-              toggle(labels[cursor])
+              toggle({ label: labels[cursor], key: labels[cursor], desc: ''})
               t.value = ''
             }
             e.preventDefault()
           } else if (e.key === 'Backspace') {
             if (t.value == '' && selected.length > 0) {
-              unset(selected[selected.length - 1])
+              unset({ label: selected[selected.length - 1], key: selected[selected.length - 1], desc: ''})
             }
           } else if (e.key === 'ArrowDown') {
             const c = new_cursor(cursor + 1, 1)
@@ -316,14 +360,17 @@ export function LabelSidekick({
           taxonomy={taxonomy}
           selected={labels}
           mode={mode}
-          onChange={(label, value) =>
+          onChange={(t, value) =>
             !disabled &&
             Model.validation_transaction(store, store =>
               advance(() => {
-                label == '' ? Model.updateDropdown(store, selected) :
-                Model.setLabel(store, selected, label, value)
+                t == null ? Model.updateDropdown(store, selected) :
+                Model.setLabel(store, selected, t, value)
               })
             )
+          }
+          updateGraph={() =>
+            Model.updateGraph(store, selected)
           }
           onKeyDown={e => {
             const key = (e.altKey || e.metaKey ? 'Alt-' : '') + (e.shiftKey ? 'Shift-' : '') + e.key
