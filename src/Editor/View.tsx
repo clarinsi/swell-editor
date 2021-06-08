@@ -47,7 +47,7 @@ const topStyle = typestyle.style({
     "header   header header"  ${header_height}
     "sidekick main   summary" 1fr
     "footer   footer footer"  ${footer_height}
-  / 185px     3fr    minmax(180px, 1fr)
+  / 250px     3fr    minmax(180px, 1fr)
   `,
   minHeight: '100%',
 

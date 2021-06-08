@@ -57,7 +57,6 @@ interface DropdownProps {
   taxonomy: Taxonomy
   selected: string[]
   onChange(t: { label: string; key: string; desc: string; }, value: boolean): void
-  updateGraph(): void
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
   mode: Model.Mode
   extraInput?: {get: () => string | undefined; set: (value: string) => void}
@@ -174,7 +173,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
                   onMouseDown={e => {
                     g.is_expanded = !g.is_expanded
                     this.forceUpdate()
-                    props.updateGraph()
                     e.preventDefault()
                   }}>
                   {is_expanded(g) ? '- ' + g.group : '+ ' + g.group}
@@ -368,9 +366,6 @@ export function LabelSidekick({
                 Model.setLabel(store, selected, t, value)
               })
             )
-          }
-          updateGraph={() =>
-            Model.updateGraph(store, selected)
           }
           onKeyDown={e => {
             const key = (e.altKey || e.metaKey ? 'Alt-' : '') + (e.shiftKey ? 'Shift-' : '') + e.key

@@ -449,9 +449,41 @@ export function modifySelection(store: Store<State>, ids: string[], value: boole
   )
 }
 
+function findParents(taxonomy: Taxonomy, selected: string[]) {
+  taxonomy.forEach(taxGroup => {
+    taxGroup.entries.forEach(entry => {
+      selected.forEach(selectedKey => {
+        if (entry.key === selectedKey) {
+          taxGroup.is_expanded = true
+        }
+      })
+    })
+    taxGroup.subgroups.forEach(taxSubgroup => {
+      taxSubgroup.entries.forEach(entry => {
+        selected.forEach(selectedKey => {
+          if (entry.key === selectedKey) {
+            taxGroup.is_expanded = true
+            taxSubgroup.is_expanded = true
+          }
+        })
+      })
+    })
+  })
+}
+
+
 export function setSelection(store: Store<State>, ids: string[]) {
   store.transaction(() => {
     store.at('selected').set(record.create<string, true>(ids, () => true))
+    // update taxonomy dropdown
+    const taxonomy = store.at('taxonomy').at(store.at('mode').get()).get()
+    const graph = store.at('graph').at('now')
+    const selected = Object.keys(store.get().selected)
+    if (selected.length > 0) {
+      const edges = G.token_ids_to_edges(graph.get(), selected)
+      const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
+      findParents(taxonomy, labels)
+    }
   })
 }
 
@@ -582,42 +614,11 @@ export function updateDropdown(store: Store<State>, token_ids: string[]) {
   edge_ids.forEach(id => graph.modify(g => G.update_dropdown(g)))
 }
 
-export function updateGraph(store: Store<State>, token_ids: string[]) {
-  const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
-  const graph = graphStore(store)
-  const edge_ids = edges.map(e => e.id)
-  const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
-  
-  // const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
-  // const graph = graphStore(store)
-  // graph.modify()
-  // const edge_ids = edges.map(e => e.id)
-  // const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
-
-  console.log('HERE')
-
-  // Add/remove label.
-  // For numbers and main anon labels, replace existing ones.
-  // const replace_conds = [
-  //   (x: string) => /^\d+$/.test(x),
-  //   (x: string) => taxonomy_has_label(modes.anonymization, x) && label_order(x) == LabelOrder.BASE,
-  // ]
-  // const replace_cond = replace_conds.find(cond => cond(t.key))
-  // const single_set_label = (labels: string[]) =>
-  //   replace_cond
-  //     ? labels.filter(l => !replace_cond(l)).concat(value ? [t.key] : [])
-  //     : Utils.set_modify(labels, t.key, value)
-  // edge_ids.forEach(id => graph.modify(g => G.modify_labels(g, id, single_set_label)))
-}
-
-
 export function setLabel(store: Store<State>, token_ids: string[], t: { label: string; key: string; desc: string; }, value: boolean) {
   const edges = G.token_ids_to_edges(currentGraph(store), token_ids)
   const graph = graphStore(store)
   const edge_ids = edges.map(e => e.id)
   const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
-
-  console.log('HERE')
 
   // Add/remove label.
   // For numbers and main anon labels, replace existing ones.

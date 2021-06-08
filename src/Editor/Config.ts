@@ -834,17 +834,17 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Zaporedje: povedek_osebek',
-            key: 'S/BR/povedek_osebek',
+            key: 'S/BR/povedek-osebek',
             desc: ''
           },
           {
             label: 'Zaporedje: povedek_predmet',
-            key: 'S/BR/povedek_predmet',
+            key: 'S/BR/povedek-predmet',
             desc: ''
           },
           {
             label: 'Zaporedje: povedek_prislovno določilo',
-            key: 'S/BR/povedek_prislovno_določilo',
+            key: 'S/BR/povedek-prislovno_določilo',
             desc: ''
           },
           {
@@ -1753,9 +1753,6 @@ export function taxonomy_has_label(taxonomy: string, label: string): boolean {
 export function taxonomy_is_expanded(taxonomy: string, label: string): boolean {
   if (!(taxonomy in config.taxonomy)) return false
   const tax: Record<string, TaxonomyGroup[]> = config.taxonomy
-  console.log(!!tax[taxonomy].find(g => g.subgroups.length > 0 ?  
-    !!g.subgroups.find(sg => !!sg.entries.find(l => l.key == label && g.is_expanded))
-    : !!g.entries.find(l => l.key == label && g.is_expanded)))
   return !!tax[taxonomy].find(g => g.subgroups.length > 0 ?  
     !!g.subgroups.find(sg => !!sg.entries.find(l => l.key == label && g.is_expanded && sg.is_expanded))
     : !!g.entries.find(l => l.key == label && g.is_expanded))
