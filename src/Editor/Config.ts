@@ -1757,3 +1757,6 @@ export function taxonomy_is_expanded(taxonomy: string, label: string): boolean {
     !!g.subgroups.find(sg => !!sg.entries.find(l => l.key == label && g.is_expanded && sg.is_expanded))
     : !!g.entries.find(l => l.key == label && g.is_expanded))
 }
+
+// export const visible_modes = ['anonymization', 'normalization', 'correctannot', 'validate']
+export const visible_modes = ['correctannot_slo',]

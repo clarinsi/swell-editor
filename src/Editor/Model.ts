@@ -7,11 +7,12 @@ import * as record from '../record'
 
 import * as Manual from '../Doc/Manual'
 
-import {Taxonomy, config, label_order, LabelOrder, taxonomy_has_label, label_args} from './Config'
+import {Taxonomy, config, label_order, LabelOrder, taxonomy_has_label, label_args, visible_modes} from './Config'
 import {Severity, Rule, edge_check} from './Validate'
 import {init_pstore, anonymize, Pseudonyms, is_anon_label} from './Anonymization'
 import {configSwell} from './swellData'
 
+import * as fs from 'fs'
 
 export interface State {
   readonly graph: Undo<G.Graph>
@@ -36,6 +37,7 @@ export interface State {
   readonly show: Partial<Record<Show, true>>
   readonly doc?: string
   readonly doc_node?: Element
+  readonly import_file?: string
 
   /** are we reading the user manual? */
   readonly manual?: string
@@ -224,6 +226,10 @@ export const modes: Record<Mode, Mode> = {
   correctannot_slo: 'correctannot_slo',
 }
 
+export function visible_button(mode: string): boolean {
+  return visible_modes.includes(mode)
+}
+
 export function mode_label(mode: Mode): string {
   return {
     [modes.anonymization]: 'pseudonymization',
@@ -248,7 +254,7 @@ export const init: State = {
   generation: 0,
   errors: {},
   validation_messages: [],
-  mode: modes.normalization,
+  mode: visible_button(modes.normalization.toString()) ? modes.normalization : modes.correctannot_slo,
   taxonomy: config.taxonomy,
   automatic_rendering: true,
   show: {
@@ -450,6 +456,20 @@ export function modifySelection(store: Store<State>, ids: string[], value: boole
 }
 
 function findParents(taxonomy: Taxonomy, selected: string[]) {
+  taxonomy.forEach(taxGroup => {
+    taxGroup.entries.forEach(entry => {
+      selected.forEach(selectedKey => {
+        taxGroup.is_expanded = false
+      })
+    })
+    taxGroup.subgroups.forEach(taxSubgroup => {
+      taxSubgroup.entries.forEach(entry => {
+        taxGroup.is_expanded = false
+        taxSubgroup.is_expanded = false
+      })
+    })
+  })
+
   taxonomy.forEach(taxGroup => {
     taxGroup.entries.forEach(entry => {
       selected.forEach(selectedKey => {

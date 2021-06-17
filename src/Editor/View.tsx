@@ -18,6 +18,7 @@ import {configSwell} from './swellData'
 import * as EditorTypes from '../EditorTypes'
 
 import {LabelSidekick} from './LabelSidekick'
+import {ImportExport} from './ImportExport'
 import * as GV from '../GraphView'
 
 import * as Manual from '../Doc/Manual'
@@ -554,11 +555,13 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
                       e => Model.flagError(store, e)
                     )
                 )}
-              {Button('validate', '', () => Model.validateState(store, true))}
-              {mode_switcher(Model.modes.anonymization, true)}
-              {mode_switcher(Model.modes.normalization)}
-              {mode_switcher(Model.modes.correctannot)}
-              {mode_switcher(Model.modes.correctannot_slo)}
+              {Model.visible_button('validate') ? Button('validate', '', () => Model.validateState(store, true)): ''}
+              {Model.visible_button(Model.modes.anonymization.toString()) ? mode_switcher(Model.modes.anonymization, true) : ''}
+              {Model.visible_button(Model.modes.normalization.toString()) ? mode_switcher(Model.modes.normalization) : ''}
+              {Model.visible_button(Model.modes.correctannot.toString()) ? mode_switcher(Model.modes.correctannot) : ''}
+              {Model.visible_button(Model.modes.correctannot_slo.toString()) ? mode_switcher(Model.modes.correctannot_slo) : ''}
+              <hr />
+              <ImportExport store={store}/>
               <hr />
               {toggle_button('graph')}
               {toggle_button('diff')}
