@@ -199,6 +199,144 @@ const anonymization: Taxonomy = [
   },
 ]
 
+export const correctannot_kost: Taxonomy = [
+  {
+    group: 'Zapis',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Ločilo',
+        key: 'Ločilo',
+        desc: ''
+      },
+      {
+        label: 'Črkovanje',
+        key: 'Črkovanje',
+        desc: ''
+      },
+      {
+        label: 'Skupaj/narazen',
+        key: 'Skupaj/narazen',
+        desc: ''
+      },
+      {
+        label: 'Mala/velika začetnica',
+        key: 'Mala/velika začetnica',
+        desc: ''
+      },
+      {
+        label: 'Krajšave',
+        key: 'Krajšave',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Besedišče',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Samostalnik',
+        key: 'Samostalnik',
+        desc: ''
+      },
+      {
+        label: 'Glagol',
+        key: 'Glagol',
+        desc: ''
+      },
+      {
+        label: 'Zaimek',
+        key: 'Zaimek',
+        desc: ''
+      },
+      {
+        label: 'Predlog',
+        key: 'Predlog',
+        desc: ''
+      },
+      {
+        label: 'Veznik',
+        key: 'Veznik',
+        desc: ''
+      },
+      {
+        label: 'Pridevnik',
+        key: 'Pridevnik',
+        desc: ''
+      },
+      {
+        label: 'Prislov',
+        key: 'Prislov',
+        desc: ''
+      },
+      {
+        label: 'Ostale besedne vrste',
+        key: 'Ostale besedne vrste',
+        desc: ''
+      },
+      {
+        label: 'Menjava prek meja besedne vrste',
+        key: 'Menjava prek meja besedne vrste',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Oblika',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Oblika',
+        key: 'Oblika',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Skladnja',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Struktura',
+        key: 'Struktura',
+        desc: ''
+      },
+      {
+        label: 'Besedni red',
+        key: 'Besedni red',
+        desc: ''
+      },
+      {
+        label: 'Izpuščeni jezikovni elemnti',
+        key: 'Izpuščeni jezikovni elemnti',
+        desc: ''
+      },
+      {
+        label: 'Odvečni jezikovni elementi',
+        key: 'Odvečni jezikovni elementi',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Povezani popravki',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Povezani popravki',
+        key: 'Povezani popravki',
+        desc: ''
+      },
+    ],
+  },
+]
+
 export const correctannot_slo: Taxonomy = [
   {
     group: 'Anonimizacija',
@@ -1686,6 +1824,9 @@ const docs: Record<string, Record<string, string>> = {
   correctannot_slo: {
     'annotation guidelines': doc_url('Correction-annotation_guidelines'),
   },
+  correctannot_kost: {
+    'annotation guidelines': doc_url('Correction-annotation_guidelines'),
+  },
   correctannot: {
     'annotation guidelines': doc_url('Correction-annotation_guidelines'),
   },
@@ -1696,7 +1837,7 @@ export const config = {
   examples,
   image_ws_url,
   pseuws_url,
-  taxonomy: {anonymization, normalization, correctannot, correctannot_slo},
+  taxonomy: {anonymization, normalization, correctannot, correctannot_slo, correctannot_kost},
   docs,
 }
 
@@ -1759,4 +1900,4 @@ export function taxonomy_is_expanded(taxonomy: string, label: string): boolean {
 }
 
 // export const visible_modes = ['anonymization', 'normalization', 'correctannot', 'validate']
-export const visible_modes = ['correctannot_slo',]
+export const visible_modes = ['correctannot_slo', 'correctannot_kost',]

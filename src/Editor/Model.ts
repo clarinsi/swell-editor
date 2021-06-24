@@ -217,13 +217,14 @@ export type Show =
   | 'target_text'
   | 'options'
 
-export type Mode = 'anonymization' | 'normalization' | 'correctannot' | 'correctannot_slo'
+export type Mode = 'anonymization' | 'normalization' | 'correctannot' | 'correctannot_slo' | 'correctannot_kost'
 
 export const modes: Record<Mode, Mode> = {
   anonymization: 'anonymization',
   normalization: 'normalization',
   correctannot: 'correctannot',
   correctannot_slo: 'correctannot_slo',
+  correctannot_kost: 'correctannot_kost',
 }
 
 export function visible_button(mode: string): boolean {
@@ -234,7 +235,8 @@ export function mode_label(mode: Mode): string {
   return {
     [modes.anonymization]: 'pseudonymization',
     [modes.normalization]: 'normalization',
-    [modes.correctannot_slo]: 'correction annotation Slovenian',
+    [modes.correctannot_slo]: 'correction annotation Solar',
+    [modes.correctannot_kost]: 'correction annotation Kost',
     [modes.correctannot]: 'correction annotation',
   }[mode]
 }
@@ -708,6 +710,7 @@ export const actionButtons: Record<Mode, ActionOnSelected[]> = {
   normalization: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto', 'revert'],
   correctannot: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
   correctannot_slo: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
+  correctannot_kost: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
   anonymization: ['prev', 'next', 'prev_mod', 'next_mod'],
 }
 
