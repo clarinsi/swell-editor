@@ -207,27 +207,27 @@ export const correctannot_kost: Taxonomy = [
     entries: [
       {
         label: 'Ločilo',
-        key: 'Ločilo',
+        key: 'Z-LOC',
         desc: ''
       },
       {
         label: 'Črkovanje',
-        key: 'Črkovanje',
+        key: 'Z-CRK',
         desc: ''
       },
       {
         label: 'Skupaj/narazen',
-        key: 'Skupaj/narazen',
+        key: 'Z-SN',
         desc: ''
       },
       {
         label: 'Mala/velika začetnica',
-        key: 'Mala/velika začetnica',
+        key: 'Z-MV',
         desc: ''
       },
       {
         label: 'Krajšave',
-        key: 'Krajšave',
+        key: 'Z-KR',
         desc: ''
       },
     ],
@@ -239,47 +239,42 @@ export const correctannot_kost: Taxonomy = [
     entries: [
       {
         label: 'Samostalnik',
-        key: 'Samostalnik',
+        key: 'B-SAM',
         desc: ''
       },
       {
         label: 'Glagol',
-        key: 'Glagol',
+        key: 'B-GLAG',
         desc: ''
       },
       {
         label: 'Zaimek',
-        key: 'Zaimek',
-        desc: ''
-      },
-      {
-        label: 'Predlog',
-        key: 'Predlog',
-        desc: ''
-      },
-      {
-        label: 'Veznik',
-        key: 'Veznik',
+        key: 'B-ZAIM',
         desc: ''
       },
       {
         label: 'Pridevnik',
-        key: 'Pridevnik',
+        key: 'B-PRID',
         desc: ''
       },
       {
         label: 'Prislov',
-        key: 'Prislov',
+        key: 'B-PRISL',
         desc: ''
       },
       {
-        label: 'Ostale besedne vrste',
-        key: 'Ostale besedne vrste',
+        label: 'Predlog',
+        key: 'B-PRED',
         desc: ''
       },
       {
-        label: 'Menjava prek meja besedne vrste',
-        key: 'Menjava prek meja besedne vrste',
+        label: 'Veznik',
+        key: 'B-VEZ',
+        desc: ''
+      },
+      {
+        label: 'Ostalo',
+        key: 'B-OST',
         desc: ''
       },
     ],
@@ -290,8 +285,33 @@ export const correctannot_kost: Taxonomy = [
     subgroups: [],
     entries: [
       {
-        label: 'Oblika',
-        key: 'Oblika',
+        label: 'Samostalnik',
+        key: 'O-SAM',
+        desc: ''
+      },
+      {
+        label: 'Glagol',
+        key: 'O-GLAG',
+        desc: ''
+      },
+      {
+        label: 'Zaimek',
+        key: 'O-ZAIM',
+        desc: ''
+      },
+      {
+        label: 'Pridevnik',
+        key: 'O-PRID',
+        desc: ''
+      },
+      {
+        label: 'Prislov',
+        key: 'O-PRISL',
+        desc: ''
+      },
+      {
+        label: 'Ostalo',
+        key: 'O-OST',
         desc: ''
       },
     ],
@@ -303,22 +323,22 @@ export const correctannot_kost: Taxonomy = [
     entries: [
       {
         label: 'Struktura',
-        key: 'Struktura',
+        key: 'S-STR',
         desc: ''
       },
       {
         label: 'Besedni red',
-        key: 'Besedni red',
+        key: 'S-BR',
         desc: ''
       },
       {
         label: 'Izpuščeni jezikovni elemnti',
-        key: 'Izpuščeni jezikovni elemnti',
+        key: 'S-IZP',
         desc: ''
       },
       {
         label: 'Odvečni jezikovni elementi',
-        key: 'Odvečni jezikovni elementi',
+        key: 'S-ODV',
         desc: ''
       },
     ],
@@ -330,7 +350,7 @@ export const correctannot_kost: Taxonomy = [
     entries: [
       {
         label: 'Povezani popravki',
-        key: 'Povezani popravki',
+        key: 'POV',
         desc: ''
       },
     ],
