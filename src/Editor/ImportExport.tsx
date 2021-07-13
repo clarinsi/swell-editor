@@ -25,9 +25,9 @@ export function ImportExport({store}: {store: Store<Model.State>}) {
         element.href = URL.createObjectURL(file)
         const import_file = store.at('import_file').get()
         if (import_file){
-          element.download = ''
+          element.download = String(store.at('import_file').get())
         } else {
-          element.download = ''
+          element.download = 'unknown.json'
         }
         document.body.appendChild(element)
         element.click()
