@@ -10,6 +10,9 @@ import * as ReactUtils from '../ReactUtils'
 
 import * as Model from './Model'
 import {Taxonomy, TaxonomyGroup} from './Config'
+import { getI18n } from 'react-i18next';
+
+const i18n = getI18n()
 
 const LabelSidekickStyle = style({
   ...Utils.debugName('LabelSidekickStyle'),
@@ -77,7 +80,25 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     const props = this.props
     const {taxonomy, selected, mode} = this.props
     const {cursor} = this.state
-    const labels = Utils.flatMap(taxonomy, g => g.entries.map(e => e.label))
+    const labels = Utils.flatMap(taxonomy, getLabels)
+
+    function getLabels(taxGroup:TaxonomyGroup){
+      const labels: string[] = []
+      taxGroup.entries.forEach(function (entr) {
+        labels.push(entr.label)
+      })
+      taxGroup.subgroups.forEach(function (taxSubGroup) {
+        taxSubGroup.entries.forEach(function (entr) {
+          labels.push(entr.label)
+        })
+        taxSubGroup.subgroups.forEach(function (taxSubSubGroup) {
+          taxSubSubGroup.entries.forEach(function (entr) {
+            labels.push(entr.label)
+          })
+        })
+      })
+      return labels
+    }
 
     function isSelected(l: string) {
       return selected.some(s => s === l)
@@ -103,15 +124,15 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       }
     }
 
-    function wrap(c: number) {
-      const N = labels.length
+    function wrap(c: number, currentLabels: string[]) {
+      const N = currentLabels.length
       return (c + N) % N
     }
 
-    function new_cursor(base: number, sign: 1 | -1 = 1, m = /.*/): number {
-      for (let i = 0; i < labels.length; i++) {
-        const c = wrap(base + i * sign)
-        if (m.test(labels[c])) {
+    function new_cursor(base: number, currentLabels: string[], sign: 1 | -1 = 1, m = /.*/): number {
+      for (let i = 0; i < currentLabels.length; i++) {
+        const c = wrap(base + i * sign, currentLabels)
+        if (m.test(currentLabels[c])) {
           return c
         }
       }
@@ -232,12 +253,15 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
       const parent = this.refs['taxonomy'] as any
       const height = parent.clientHeight + parent.scrollTop
       const parentTop = parent.offsetTop
-      const offsetTop = (this.refs['tax_item' + cursor] as any).offsetTop - parentTop
 
-      if (offsetTop + 50 > height) {
-        parent.scrollTop = offsetTop
-      } else if (offsetTop - 30 < parent.scrollTop) {
-        parent.scrollTop = offsetTop - 30
+      if ((this.refs['tax_item' + cursor] as any) !== undefined) {
+        const offsetTop = (this.refs['tax_item' + cursor] as any).offsetTop - parentTop
+
+        if (offsetTop + 50 > height) {
+          parent.scrollTop = offsetTop
+        } else if (offsetTop - 30 < parent.scrollTop) {
+          parent.scrollTop = offsetTop - 30
+        }
       }
     }
 
@@ -257,11 +281,13 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
             ? this.props.extraInput
               ? 'Extra input'
               : 'Filter / numeric label'
-            : 'Enter filter text'
+            : i18n.t('other.enter_filter_text')
         }
         onKeyDown={e => {
           const t = e.target as HTMLInputElement
-          if (e.key === 'Enter' || e.key === ' ') {
+          const openLabels = Model.getOpenLabels(taxonomy)
+          if (e.key === 'Enter') {
+            const a = this
             if (this.props.extraInput) {
               this.props.extraInput.set(t.value)
               t.value = ''
@@ -269,39 +295,40 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
               toggle({ label: t.value, key: t.value, desc: ''})
               t.value = ''
             } else {
-              toggle({ label: labels[cursor], key: labels[cursor], desc: ''})
+              toggle({ label: openLabels[0][cursor], key: openLabels[1][cursor], desc: ''})
               t.value = ''
             }
             e.preventDefault()
-          } else if (e.key === 'Backspace') {
-            if (t.value == '' && selected.length > 0) {
-              unset({ label: selected[selected.length - 1], key: selected[selected.length - 1], desc: ''})
-            }
-          } else if (e.key === 'ArrowDown') {
-            const c = new_cursor(cursor + 1, 1)
+          } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+            const c = new_cursor(cursor + 1, openLabels[0], 1)
             this.setState({cursor: c})
             scrollToCursor(c)
             e.preventDefault()
-          } else if (e.key === 'ArrowUp') {
-            const c = new_cursor(cursor - 1, -1)
+          } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+            const c = new_cursor(cursor - 1, openLabels[0], -1)
             this.setState({cursor: c})
             scrollToCursor(c)
             e.preventDefault()
           } else if (e.key === 'Tab') {
             if (e.shiftKey) {
-              const c = new_cursor(cursor - 1, -1, liberal_re(t.value))
+              const c = new_cursor(cursor - 1, openLabels[0], -1, liberal_re(t.value))
               this.setState({cursor: c})
               scrollToCursor(c)
             } else {
-              const c = new_cursor(cursor + 1, 1, liberal_re(t.value))
+              const c = new_cursor(cursor + 1, openLabels[0], 1, liberal_re(t.value))
               this.setState({cursor: c})
               scrollToCursor(c)
             }
             e.preventDefault()
           } else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
-            const c = new_cursor(cursor, 1, liberal_re(t.value + e.key))
-            scrollToCursor(c)
+            const filterQuery = e.key === 'Backspace' ? t.value.substring(0, t.value.length - 1) : t.value + e.key
+
+            // const filterQuery = t.value + e.key
+            Model.expandFilterText(taxonomy, selected, filterQuery)
+            const openLabels = Model.getOpenLabels(taxonomy)
+            const c = new_cursor(0, openLabels[0], 1, liberal_re(filterQuery))
             this.setState({cursor: c})
+            scrollToCursor(c)
           }
           this.props.onKeyDown && this.props.onKeyDown(e)
         }}
@@ -349,7 +376,7 @@ export function LabelSidekick({
           {Model.actionButtons[mode].map(action =>
             ReactUtils.Button(
               Model.actionButtonNames[action],
-              Model.actionDescriptions[action] + `\n\nShortcut: ${Model.actionKeyboard[action]}`,
+              Model.actionDescriptions[action] + `\n\n` + i18n.t('actionButtonNames.shortcut') + `: ${Model.actionKeyboard[action]}`,
               () => Model.performAction(store, action)
             )
           )}

@@ -8,6 +8,9 @@ import * as GV from '../GraphView'
 
 import {VNode} from '../ReactUtils'
 import * as ReactUtils from '../ReactUtils'
+import '../i18n/config';
+import { withTranslation, useTranslation } from 'react-i18next';
+
 
 export interface State {
   readonly graph_segments: GraphSegments
@@ -22,25 +25,26 @@ export const init: State = {
   scroll: null,
 }
 
-export function App(store: Store<State>): () => VNode {
-  const global = window as any
-  global.store = store
-  global.reset = () => store.set(init)
-  global.G = G
-  global.Pilot = Pilot
-  // store.on(x => console.log(json(x)))
-  store.storage_connect('swell-vis')
-  store.at('scroll').ondiff(scroll => {
-    const {graph_segments} = store.get()
-    let text
-    if (scroll && graph_segments[0] && ({text} = graph_segments[0])) {
-      if (text != scroll.text) {
-        store.update({graph_segments: Pilot.GraphSegments(scroll.text)})
-      }
-    }
-  })
-  return () => View(store)
-}
+// export function App(store: Store<State>): () => VNode {
+//   const global = window as any
+//   const { t, i18n } = useTranslation();
+//   global.store = store
+//   global.reset = () => store.set(init)
+//   global.G = G
+//   global.Pilot = Pilot
+//   // store.on(x => console.log(json(x)))
+//   store.storage_connect('swell-vis')
+//   store.at('scroll').ondiff(scroll => {
+//     const {graph_segments} = store.get()
+//     let text
+//     if (scroll && graph_segments[0] && ({text} = graph_segments[0])) {
+//       if (text != scroll.text) {
+//         store.update({graph_segments: Pilot.GraphSegments(scroll.text)})
+//       }
+//     }
+//   })
+//   return () => View(store)
+// }
 
 export function View(store: Store<State>): VNode {
   const state = store.get()

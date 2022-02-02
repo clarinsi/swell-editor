@@ -26,6 +26,9 @@ import {Severity} from './Validate'
 import {anonymize_when, anonfixGraph, is_anon_label} from './Anonymization'
 import {anonService} from '../AnonService'
 
+import '../i18n/config';
+import { Translation, getI18n } from 'react-i18next';
+
 typestyle.cssRaw(`
 body > div {
   height: 100%
@@ -34,6 +37,8 @@ body > div {
 
 const header_height = '32px'
 const footer_height = '26px'
+
+const i18n = getI18n()
 
 const topStyle = typestyle.style({
   ...Utils.debugName('topStyle'),
@@ -238,6 +243,7 @@ const topStyle = typestyle.style({
 })
 
 export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): VNode {
+  // const { t } = useTranslation(['ns1', 'ns2']);
   const state = store.get()
   const graph = Model.graphStore(store)
   const readonly = Model.is_target_readonly(state.mode)
@@ -350,11 +356,11 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
         {sv_part()}
         {state.show.source_text && (
           <div className="TopPad">
-            <em>Source text:</em>
+            <Translation>{(t) => <em>{t('main.source_text')}:</em>}</Translation>
             <div className={hovering ? 'cm-hovering' : ''}>{cms.source.node}</div>
             <div>
               {!!state.backend ||
-                Button('copy to target', '', () =>
+                Button(i18n.t('main.copy_to_target'), '', () =>
                   advance(() => graph.modify(g => G.init_from(G.source_texts(g))))
                 )}
             </div>
@@ -362,7 +368,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
         )}
         {state.show.target_text && (
           <div className="TopPad">
-            <em>Target text:</em>
+            <Translation>{(t) => <em>{t('main.target_text')}:</em>}</Translation>
             <div className={hovering ? 'cm-hovering' : ''}>{cms.target.node}</div>
           </div>
         )}
@@ -449,8 +455,8 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
 
     const toggle = (show: Model.Show) => show_store(show).modify(b => (b ? undefined : true))
 
-    const toggle_button = (show: Model.Show, enabled?: boolean, label = show.replace('_', ' ')) =>
-      Button(show_hide_str(state.show[show]) + label, '', () => toggle(show), enabled, true)
+    const toggle_button = (show: Model.Show, enabled?: boolean, label = show) =>
+      Button(show_hide_str(state.show[show]) + i18n.t('options.' + label), '', () => toggle(show), enabled, true)
 
     const exit_reanonymization = (mode: Model.Mode) => {
       // The done status needs to go from false to true at validation.
@@ -478,7 +484,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
 
     const mode_switcher = (mode: Model.Mode, enable_in_any_mode: boolean = false) =>
       Button(
-        `switch to ${Model.mode_label(mode)}`,
+        i18n.t('options.switch_to') + ` ${Model.mode_label(mode)}`,
         '',
         Model.inAnonfixMode(state)
           ? () => exit_reanonymization(mode)
@@ -490,8 +496,8 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       <React.Fragment>
         <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
           <div>
-            {Button('undo', '', history.undo, history.canUndo())}
-            {Button('redo', '', history.redo, history.canRedo())}
+            {Button(i18n.t('headerButtons.undo'), '', history.undo, history.canUndo())}
+            {Button(i18n.t('headerButtons.redo'), '', history.redo, history.canRedo())}
           </div>
           <div style={{fontWeight: 'bold'}}>
             SVALA {Model.mode_label(state.mode)} {state.essay ? `– essay ${state.essay}` : ''}{' '}
@@ -515,6 +521,20 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
                 back
               </a>
             )}
+            {
+              Button(
+                i18n.t('headerButtons.opposite_language'),
+                i18n.t('headerButtons.opposite_language_description'),
+                () => {
+                  
+                  if(i18n.language === 'en-US'){
+                    i18n.changeLanguage('sl');
+                  } else {
+                    i18n.changeLanguage('en-US');
+                  }
+                  window.location.reload();
+                }
+              )}
             {state.done !== undefined &&
               !Model.inAnonfixMode(state) &&
               Button(state.done ? 'not done' : 'done', 'toggle between done and not done', () =>
@@ -529,10 +549,10 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               {toggle_button('source_text')}
               {toggle_button('target_text')}
               {RestrictionButtons(store.at('side_restriction'))}
-              {Button('fit graph', 'adjust the height of the graph view', () => fitGraph())}
+              {Button(i18n.t('options.fit_graph'), i18n.t('options.fit_graph_description'), () => fitGraph())}
               {Button(
-                'show full graph',
-                'render the full graph (may be slow, please have patience)',
+                i18n.t('options.show_full_graph'),
+                i18n.t('options.show_full_graph_description'),
                 () => {
                   store.transaction(() => {
                     Model.setSelection(store, [])
@@ -566,16 +586,9 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               <hr />
               {toggle_button('graph')}
               {toggle_button('diff')}
-              {toggle_button('image_link')}
-              {// Examples destroy essays.
-              toggle_button('examples', !state.backend)}
               <hr />
-              {config.docs[state.mode] &&
-                record.traverse(config.docs[state.mode], (url, label) =>
-                  Button(`view ${label}`, '', () => store.at('doc').set(url))
-                )}
               {Button(
-                state.manual === undefined ? 'manual' : 'exit manual',
+                state.manual === undefined ? i18n.t('options.manual') : i18n.t('options.exit_manual'),
                 'toggle showing manual',
                 () => Model.setManualTo(store, state.manual ? undefined : 'manual')
               )}
@@ -650,7 +663,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
           <a href="https://github.com/spraakbanken/swell-editor/issues" target="_blank">
             <i>Issues</i>
           </a>{' '}
-          <b>Link to Articles:</b>{' '}
+          <Translation>{(t) => <b>{t('main.link_to_Articles')}</b>}</Translation>{' '}
           <a
             href="http://www.ep.liu.se/ecp/159/023/ecp18159023.pdf"
             target="_blank">
@@ -691,17 +704,17 @@ function fitGraph() {
 }
 
 function show_hide_str(b: boolean | undefined) {
-  return b ? 'hide ' : 'show '
+  return b ? i18n.t('options.hide') + ' ' : i18n.t('options.show') + ' '
 }
 
 function click_replace(b: boolean | undefined) {
-  return b ? 'Spaghetti mode disable' : 'Spaghetti mode enable'
+  return b ? i18n.t('main.spaghetti_button_text_disable') : i18n.t('main.spaghetti_button_text_enable')
 }
 
 function RestrictionButtons(store: Store<G.Side | undefined>): VNode[] {
   return G.sides.map(k =>
     Button(
-      show_hide_str(store.get() !== G.opposite(k)) + `${k} in graph`,
+      show_hide_str(store.get() !== G.opposite(k)) + i18n.t(`options.${k}`) + ` ` + i18n.t('options.in_graph'),
       '',
       // Undefined means show both.
       () => store.set(store.get() === undefined ? G.opposite(k) : undefined),
@@ -772,7 +785,7 @@ function ShowComments(store: Store<Model.State>) {
   return (
     <div>
       <div className="comment-pane box vsep">
-        <p>Document comment:</p>
+        <Translation>{(t) => <p>{t('summary.document_comment')}</p>}</Translation>
         <textarea
           // Prevent refocusing to label filter field.
           className={'keepfocus'}
@@ -783,20 +796,6 @@ function ShowComments(store: Store<Model.State>) {
           disabled={!Model.can_modify(store.get()).state}
         />
       </div>
-      {G.token_ids_to_edges(g, Object.keys(store.at('selected').get()))
-        .filter(edge => edge.labels.some(G.is_comment_label))
-        .map(edge => (
-          <div className="comment-pane box vsep" key={edge.id}>
-            <p>Edge comment:</p>
-            <textarea
-              className={'keepfocus'}
-              onMouseDown={ev => ev.stopPropagation()}
-              onChange={ev => setEdgeComment(edge.id, ev.target.value)}
-              defaultValue={edge.comment}
-              disabled={!Model.can_modify(store.get()).state}
-            />
-          </div>
-        ))}
     </div>
   )
 }

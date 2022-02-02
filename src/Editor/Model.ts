@@ -14,6 +14,11 @@ import {configSwell} from './swellData'
 
 import * as fs from 'fs'
 
+import '../i18n/config';
+import { getI18n } from 'react-i18next';
+
+const i18n = getI18n()
+
 export interface State {
   readonly graph: Undo<G.Graph>
   readonly rich_diff?: G.RichDiff[]
@@ -235,8 +240,8 @@ export function mode_label(mode: Mode): string {
   return {
     [modes.anonymization]: 'pseudonymization',
     [modes.normalization]: 'normalization',
-    [modes.correctannot_slo]: 'correction annotation Solar',
-    [modes.correctannot_kost]: 'correction annotation Kost',
+    [modes.correctannot_slo]: i18n.t('options.correction_annotation_Solar'),
+    [modes.correctannot_kost]: i18n.t('options.correction_annotation_Kost'),
     [modes.correctannot]: 'correction annotation',
   }[mode]
 }
@@ -457,7 +462,7 @@ export function modifySelection(store: Store<State>, ids: string[], value: boole
   )
 }
 
-function findParents(taxonomy: Taxonomy, selected: string[]) {
+function minimizeTaxonomy(taxonomy: Taxonomy, selected: string[]) {
   taxonomy.forEach(taxGroup => {
     taxGroup.entries.forEach(entry => {
       selected.forEach(selectedKey => {
@@ -471,6 +476,54 @@ function findParents(taxonomy: Taxonomy, selected: string[]) {
       })
     })
   })
+}
+
+// expands parents of filter text
+export function expandFilterText(taxonomy: Taxonomy, selected: string[], filter: string) {
+  expandParents(taxonomy, selected)
+
+  taxonomy.forEach(taxGroup => {
+    taxGroup.entries.forEach(entry => {
+      if (entry.label.toLowerCase().startsWith(filter.toLowerCase())) {
+        taxGroup.is_expanded = true
+      }
+    })
+    taxGroup.subgroups.forEach(taxSubgroup => {
+      taxSubgroup.entries.forEach(entry => {
+        if (entry.label.toLowerCase().startsWith(filter.toLowerCase())) {
+          taxGroup.is_expanded = true
+          taxSubgroup.is_expanded = true
+        }
+      })
+    })
+  })
+}
+
+// expands parents of filter text
+export function getOpenLabels(taxonomy: Taxonomy) {
+  const openLabels: string[][] = [[], []]
+
+  taxonomy.forEach(taxGroup => {
+    taxGroup.entries.forEach(entry => {
+      if (taxGroup.is_expanded) {
+        openLabels[0].push(entry.label)
+        openLabels[1].push(entry.key)
+      }
+    })
+    taxGroup.subgroups.forEach(taxSubgroup => {
+      taxSubgroup.entries.forEach(entry => {
+        if (taxSubgroup.is_expanded) {
+          openLabels[0].push(entry.label)
+          openLabels[1].push(entry.key)
+        }
+      })
+    })
+  })
+  return openLabels
+}
+
+function expandParents(taxonomy: Taxonomy, selected: string[]) {
+  minimizeTaxonomy(taxonomy, selected)
 
   taxonomy.forEach(taxGroup => {
     taxGroup.entries.forEach(entry => {
@@ -504,7 +557,7 @@ export function setSelection(store: Store<State>, ids: string[]) {
     if (selected.length > 0) {
       const edges = G.token_ids_to_edges(graph.get(), selected)
       const labels = Utils.uniq(Utils.flatMap(edges, e => e.labels))
-      findParents(taxonomy, labels)
+      expandParents(taxonomy, labels)
     }
   })
 }
@@ -714,32 +767,32 @@ export const actionButtons: Record<Mode, ActionOnSelected[]> = {
   anonymization: ['prev', 'next', 'prev_mod', 'next_mod'],
 }
 
+const b = getI18n()
+
 export const actionDescriptions: Record<ActionOnSelected, string> = {
-  revert: 'Local undo on the selected tokens. Restores them to the source text.',
-  auto:
-    'Makes the selected tokens stop being manually linked and falls back to the automatic aligner.',
-  orphan: 'Makes each of the selected tokens be orphaned: only linked to themselves.',
-  merge: 'Connects the selected tokens and the tokens they are linked to.',
-  group:
-    'Makes a group of the selected words. (Any words they in turn are connected that are not selected will not be part of the group.)',
-  deselect: 'Deselects the current group',
-  next: 'Select next group',
-  prev: 'Select previous group',
-  next_mod: 'Select the next group which has modifications',
-  prev_mod: 'Select the previous group which has modifications',
+  revert: b.t('actionButtonNames.revert_description'),
+  auto: b.t('actionButtonNames.auto_description'),
+  orphan: b.t('actionButtonNames.orphan_description'),
+  merge: '',
+  group: b.t('actionButtonNames.group_description'),
+  deselect: '',
+  next: b.t('actionButtonNames.next_description'),
+  prev: b.t('actionButtonNames.previous_description'),
+  next_mod: b.t('actionButtonNames.next_mod_description'),
+  prev_mod: b.t('actionButtonNames.prev_mod_description'),
 }
 
 export const actionButtonNames: Record<ActionOnSelected, string> = {
-  revert: 'revert',
-  auto: 'auto',
-  orphan: 'orphan',
-  merge: 'merge',
-  group: 'group',
-  deselect: 'deselect',
-  next: 'next',
-  prev: 'previous',
-  next_mod: 'next mod',
-  prev_mod: 'prev mod',
+  revert: b.t('actionButtonNames.revert'),
+  auto: b.t('actionButtonNames.auto'),
+  orphan: b.t('actionButtonNames.orphan'),
+  merge: '',
+  group: b.t('actionButtonNames.group'),
+  deselect: '',
+  next: b.t('actionButtonNames.next'),
+  prev: b.t('actionButtonNames.previous'),
+  next_mod: b.t('actionButtonNames.next_mod'),
+  prev_mod: b.t('actionButtonNames.prev_mod'),
 }
 
 // Alt-{q,w,t,n} are blocked on mac

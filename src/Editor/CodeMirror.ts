@@ -1,4 +1,4 @@
-import * as CodeMirror from 'codemirror'
+import CodeMirror from 'codemirror'
 import {Store} from 'reactive-lens'
 import * as Utils from '../Utils'
 

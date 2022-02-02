@@ -4,7 +4,9 @@ import * as G from '../Graph'
 import {Store, Lens, Undo} from 'reactive-lens'
 import * as Model from './Model'
 import * as Utils from '../Utils'
+import { getI18n } from 'react-i18next';
 
+const i18n = getI18n()
 
 export function ImportExport({store}: {store: Store<Model.State>}) {
   function TextInputWithFocusButton() {
@@ -55,9 +57,9 @@ export function ImportExport({store}: {store: Store<Model.State>}) {
         <>
           { /* in addition, inputEl only can be used with input elements. Yay! */ }
           <input type='file' id='file' onChange={(e: React.ChangeEvent<HTMLInputElement>) => inputChange(e)} ref={inputEl} style={{display: 'none'}}/>
-          {Button('import graph', '', () => onImportButtonClick())}
+          {Button(i18n.t('options.import_graph'), '', () => onImportButtonClick())}
           <input id="myInput" style={{display: 'none'}}/>
-          {Button('export graph', '', () => onExportButtonClick())}
+          {Button(i18n.t('options.export_graph'), '', () => onExportButtonClick())}
         </>
       );
     }

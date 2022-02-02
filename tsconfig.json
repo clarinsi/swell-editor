@@ -11,7 +11,9 @@
     "lib": ["es2017", "dom"],
     "noEmitOnError": true,
     "allowUnreachableCode": true,
-    "keyofStringsOnly": true
+    "keyofStringsOnly": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": ["src", "test"],
   "parcelTsPluginOptions": {
