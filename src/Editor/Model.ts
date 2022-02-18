@@ -462,7 +462,7 @@ export function modifySelection(store: Store<State>, ids: string[], value: boole
   )
 }
 
-function minimizeTaxonomy(taxonomy: Taxonomy, selected: string[]) {
+export function minimizeTaxonomy(taxonomy: Taxonomy, selected: string[]) {
   taxonomy.forEach(taxGroup => {
     taxGroup.entries.forEach(entry => {
       selected.forEach(selectedKey => {
@@ -522,7 +522,7 @@ export function getOpenLabels(taxonomy: Taxonomy) {
   return openLabels
 }
 
-function expandParents(taxonomy: Taxonomy, selected: string[]) {
+export function expandParents(taxonomy: Taxonomy, selected: string[]) {
   minimizeTaxonomy(taxonomy, selected)
 
   taxonomy.forEach(taxGroup => {

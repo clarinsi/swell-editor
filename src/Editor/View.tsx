@@ -500,7 +500,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
             {Button(i18n.t('headerButtons.redo'), '', history.redo, history.canRedo())}
           </div>
           <div style={{fontWeight: 'bold'}}>
-            SVALA {Model.mode_label(state.mode)} {state.essay ? `– essay ${state.essay}` : ''}{' '}
+            SVALA {Model.mode_label(state.mode)} { state.import_file == undefined ? '' : `(${state.import_file})` } {state.essay ? `– essay ${state.essay}` : ''}{' '}
             {!Model.can_modify(state).state && '(read-only)'}
           </div>
           <div>

@@ -321,14 +321,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
             }
             e.preventDefault()
           } else if (!e.altKey && !e.ctrlKey && !e.metaKey) {
-            const filterQuery = e.key === 'Backspace' ? t.value.substring(0, t.value.length - 1) : t.value + e.key
+            if (e.key === 'Backspace' && t.value == '' && selected.length > 0) {
+              unset({ label: selected[selected.length - 1], key: selected[selected.length - 1], desc: ''})
+            } else if (e.key === 'Backspace' && (t.value.length == 0 || t.value.length == 1)){
+                // Model.expandParents(taxonomy, selected)
+            } else {
+              const filterQuery = e.key === 'Backspace' ? t.value.substring(0, t.value.length - 1) : t.value + e.key
 
-            // const filterQuery = t.value + e.key
-            Model.expandFilterText(taxonomy, selected, filterQuery)
-            const openLabels = Model.getOpenLabels(taxonomy)
-            const c = new_cursor(0, openLabels[0], 1, liberal_re(filterQuery))
-            this.setState({cursor: c})
-            scrollToCursor(c)
+              Model.expandFilterText(taxonomy, selected, filterQuery)
+              const openLabels = Model.getOpenLabels(taxonomy)
+              const c = new_cursor(0, openLabels[0], 1, liberal_re(filterQuery))
+              this.setState({cursor: c})
+              scrollToCursor(c)
+            }
           }
           this.props.onKeyDown && this.props.onKeyDown(e)
         }}
