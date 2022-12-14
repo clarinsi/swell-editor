@@ -546,6 +546,8 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
         {state.show.options && (
           <div className="menu">
             <div className="box">
+              <ImportExport store={store}/>
+              <hr />
               {toggle_button('source_text')}
               {toggle_button('target_text')}
               {RestrictionButtons(store.at('side_restriction'))}
@@ -581,8 +583,6 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               {Model.visible_button(Model.modes.correctannot.toString()) ? mode_switcher(Model.modes.correctannot) : ''}
               {Model.visible_button(Model.modes.correctannot_slo.toString()) ? mode_switcher(Model.modes.correctannot_slo) : ''}
               {Model.visible_button(Model.modes.correctannot_kost.toString()) ? mode_switcher(Model.modes.correctannot_kost) : ''}
-              <hr />
-              <ImportExport store={store}/>
               <hr />
               {toggle_button('graph')}
               {toggle_button('diff')}

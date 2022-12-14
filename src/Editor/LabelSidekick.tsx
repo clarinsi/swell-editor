@@ -381,7 +381,7 @@ export function LabelSidekick({
           {Model.actionButtons[mode].map(action =>
             ReactUtils.Button(
               Model.actionButtonNames[action],
-              Model.actionDescriptions[action] + `\n\n` + i18n.t('actionButtonNames.shortcut') + `: ${Model.actionKeyboard[action]}`,
+              '',
               () => Model.performAction(store, action)
             )
           )}

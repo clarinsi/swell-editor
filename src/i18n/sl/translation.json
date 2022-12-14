@@ -19,7 +19,7 @@
     "prev_description": "Select previous group",
     "next_mod_description": "Select the next group which has modifications",
     "prev_mod_description": "Select the previous group which has modifications",
-    "shortcut": "Bljižnica"
+    "shortcut": "Bližnjica"
   },
   "headerButtons": {
     "undo": "razveljavi",
@@ -35,15 +35,15 @@
     "source_text": "izvorno besedilo",
     "target_text": "popravljeno besedilo",
     "in_graph": "v grafu povezav",
-    "source": "izvorno",
-    "target": "popravljeno",
+    "source": "'izvorno'",
+    "target": "'popravljeno'",
     "fit_graph": "prilagodi graf",
     "fit_graph_description": "prilagodi višino grafa okencu",
     "show_full_graph": "pokaži celoten graf",
     "show_full_graph_description": "izdela celoten graf (postopek lahko traja dlje časa)",
     "switch_to": "preklopi na",
-    "correction_annotation_Solar": "oznake korpusa Šolar",
-    "correction_annotation_Kost": "oznake korpusa Kost",
+    "correction_annotation_Solar": "oznake sistema 'Šolar'",
+    "correction_annotation_Kost": "oznake sistema 'KOST'",
     "import_graph": "uvozi podatke",
     "export_graph": "izvozi podatke",
     "graph": "graf v formatu json",
@@ -52,18 +52,18 @@
     "examples": "primere",
     "view": "odpri",
     "annotation guidelines": "navodila za označevanje",
-    "manual": "navodila za uporabo programa",
+    "manual": "o nastanku in rabi programa",
     "exit_manual": "zapusti navodila za uporabo programa",
   },
   "main": {
     "source_text": "izvorno besedilo",
     "target_text": "popravljeno besedilo",
-    "copy_to_target": "copy to target",
+    "copy_to_target": "kopiraj v 'popravljeno'",
     "spaghetti_button_text_enable": "pokaži povezave",
     "spaghetti_button_text_disable": "skrij povezave",
     "link_to_Articles": "Koristne povezave",
   },
   "other": {
-    "enter_filter_text": "???",
+    "enter_filter_text": "vpišite oznako",
   }
 }

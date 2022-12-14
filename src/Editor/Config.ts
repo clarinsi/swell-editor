@@ -384,7 +384,7 @@ export const correctannot_slo: Taxonomy = [
     entries: [
       {
         label: 'Nečitljivo',
-        key: 'N//necitljivo',
+        key: 'N//nečitljivo',
         desc: ''
       },
       {
@@ -558,12 +558,12 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Predlog s/z',
-            key: 'Č/PREDL/sz',
+            key: 'Č/PRED/sz',
             desc: ''
           },
           {
             label: 'Predlog k/h',
-            key: 'Č/PREDL/kh',
+            key: 'Č/PRED/kh',
             desc: ''
           },
         ],
@@ -667,7 +667,7 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Oblika zaimka',
-            key: 'O/KAT/oblika_zaimka',
+            key: 'O/KAT/oblika-zaimka',
             desc: ''
           },
           {
@@ -689,32 +689,32 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Glagolska osnova',
-            key: 'O/PAR/glagolska_osnova',
+            key: 'O/PAR/glagolska-osnova',
             desc: ''
           },
           {
             label: 'Glagolska končnica',
-            key: 'O/PAR/glagolska_končnica',
+            key: 'O/PAR/glagolska-končnica',
             desc: ''
           },
           {
             label: 'Neglagolska osnova',
-            key: 'O/PAR/neglagolska_osnova',
+            key: 'O/PAR/neglagolska-osnova',
             desc: ''
           },
           {
             label: 'Neglagolska končnica',
-            key: 'O/PAR/neglagolska_končnica',
+            key: 'O/PAR/neglagolska-končnica',
             desc: ''
           },
           {
             label: 'Neobstojni vokal',
-            key: 'O/PAR/neobstojni_vokal',
+            key: 'O/PAR/neobstojni-vokal',
             desc: ''
           },
           {
             label: 'Preglas in cč',
-            key: 'O/PAR/preglas_in_cč',
+            key: 'O/PAR/preglas-in-cč',
             desc: ''
           },
         ],
@@ -731,7 +731,7 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Mati, hči',
-            key: 'O/DOD/besede-mati_hči',
+            key: 'O/DOD/besede-mati-hči',
             desc: ''
           },
           {
@@ -755,17 +755,17 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Napačno lastno ime',
-            key: 'B/SAM/napačno_lastno',
+            key: 'B/SAM/napačno-lastno',
             desc: ''
           },
           {
             label: 'Lastno in občno ime',
-            key: 'B/SAM/lastno_občno',
+            key: 'B/SAM/lastno-občno',
             desc: ''
           },
           {
             label: 'Občno besedišče',
-            key: 'B/SAM/občno_besedišče',
+            key: 'B/SAM/občno-besedišče',
             desc: ''
           },
         ],
@@ -782,7 +782,7 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Menjava moči – morati',
-            key: 'B/GLAG/moči_morati',
+            key: 'B/GLAG/moči-morati',
             desc: ''
           },
           {
@@ -804,12 +804,12 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Povratna svojilnost',
-            key: 'B/ZAIM/povratna_svojilnost',
+            key: 'B/ZAIM/povratna-svojilnost',
             desc: ''
           },
           {
             label: 'Menjava ki – kateri',
-            key: 'B/ZAIM/ki_kateri',
+            key: 'B/ZAIM/ki-kateri',
             desc: ''
           },
           {
@@ -836,17 +836,17 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Predlog v glagolskih zvezah',
-            key: 'B/PRED/glag_zveze',
+            key: 'B/PRED/glagolske-zveze',
             desc: ''
           },
           {
             label: 'Predlog v neglagolskih zvezah',
-            key: 'B/PRED/neglag_zveze',
+            key: 'B/PRED/neglagolske-zveze',
             desc: ''
           },
           {
             label: 'Lokacijske dvojnice',
-            key: 'B/PRED/lokacijske_dvojnice',
+            key: 'B/PRED/lokacijske-dvojnice',
             desc: ''
           },
           {
@@ -863,7 +863,7 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Menjave in-pa-ter',
-            key: 'B/VEZ/in_pa_ter',
+            key: 'B/VEZ/in-pa-ter',
             desc: ''
           },
           {
@@ -873,7 +873,7 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Sprememba odnosa',
-            key: 'B/VEZ/sprememba_odnosa',
+            key: 'B/VEZ/sprememba-odnosa',
             desc: ''
           },
           {
@@ -926,37 +926,37 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Polnopomenska beseda ali bes. zveza v zaimek',
-            key: 'B/MEN/polnopomenska_v_zaimek',
+            key: 'B/MEN/polnopomenska-v-zaimek',
             desc: ''
           },
           {
             label: 'Zaimek v polnopomensko besedo ali bes. zvezo',
-            key: 'B/MEN/zaimek_v_polnopomensko',
+            key: 'B/MEN/zaimek-v-polnopomensko',
             desc: ''
           },
           {
             label: 'Menjava veznika in zaimka',
-            key: 'B/MEN/veznik_zaimek',
+            key: 'B/MEN/veznik-zaimek',
             desc: ''
           },
           {
             label: 'Besedna družina',
-            key: 'B/MEN/besedna_družina',
+            key: 'B/MEN/besedna-družina',
             desc: ''
           },
           {
             label: 'Samostalnik in zveza',
-            key: 'B/MEN/samostalnik_bz',
+            key: 'B/MEN/samostalnik-bz',
             desc: ''
           },
           {
             label: 'Glagol in zveza',
-            key: 'B/MEN/glagol_bz',
+            key: 'B/MEN/glagol-bz',
             desc: ''
           },
           {
             label: 'Prislov/pridevnik in zveza',
-            key: 'B/MEN/prislov_pridevnik_bz',
+            key: 'B/MEN/prislov-pridevnik-bz',
             desc: ''
           },
           {
@@ -1002,7 +1002,7 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Zaporedje: povedek_prislovno določilo',
-            key: 'S/BR/povedek-prislovno_določilo',
+            key: 'S/BR/povedek-prislovno-določilo',
             desc: ''
           },
           {
@@ -1012,17 +1012,17 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Zaporedje znotraj stavčnih členov',
-            key: 'S/BR/znotraj_stavčnega_člena',
+            key: 'S/BR/znotraj-stavčnega-člena',
             desc: ''
           },
           {
             label: 'Naslonski niz: zaporedje naslonk',
-            key: 'S/BR/naslonski_niz-znotraj',
+            key: 'S/BR/naslonski-niz-znotraj',
             desc: ''
           },
           {
             label: 'Naslonski niz: prirednost_podrednost',
-            key: 'S/BR/naslonski_niz-prirednost_podrednost',
+            key: 'S/BR/naslonski-niz-prirednost-podrednost',
             desc: ''
           },
           {
@@ -1039,12 +1039,12 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Samostalnik: občno ime',
-            key: 'S/IZPUST/samostalnik-občno_ime',
+            key: 'S/IZPUST/samostalnik-občno-ime',
             desc: ''
           },
           {
             label: 'Samostalnik: lastno ime',
-            key: 'S/IZPUST/samostalnik-lastno_ime',
+            key: 'S/IZPUST/samostalnik-lastno-ime',
             desc: ''
           },
           {
@@ -1107,6 +1107,11 @@ export const correctannot_slo: Taxonomy = [
             key: 'S/IZPUST/stavek',
             desc: ''
           },
+          {
+            label: 'Poved',
+            key: 'S/IZPUST/poved',
+            desc: ''
+          },
         ],
       },
       {
@@ -1121,12 +1126,12 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Samostalnik: občno ime',
-            key: 'S/ODVEČ/samostalnik-občno_ime',
+            key: 'S/ODVEČ/samostalnik-občno-ime',
             desc: ''
           },
           {
             label: 'Samostalnik: lastno ime',
-            key: 'S/ODVEČ/samostalnik-lastno_ime',
+            key: 'S/ODVEČ/samostalnik-lastno-ime',
             desc: ''
           },
           {
@@ -1141,12 +1146,12 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Beseda pa z drugimi vezniki',
-            key: 'S/ODVEČ/veznik-pa_vezniki',
+            key: 'S/ODVEČ/veznik-pa-vezniki',
             desc: ''
           },
           {
             label: 'Drugi primeri z besedo pa',
-            key: 'S/ODVEČ/veznik-pa_drugo',
+            key: 'S/ODVEČ/veznik-pa-drugo',
             desc: ''
           },
           {
@@ -1228,37 +1233,37 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Svojina z besedo od',
-            key: 'S/STR/svojina_od',
+            key: 'S/STR/svojina-od',
             desc: ''
           },
           {
             label: 'Svojina z rodilnikom',
-            key: 'S/STR/svojina_rodilnik',
+            key: 'S/STR/svojina-rodilnik',
             desc: ''
           },
           {
             label: 'Menjava ločilo – veznik',
-            key: 'S/STR/ločilo_veznik',
+            key: 'S/STR/ločilo-veznik',
             desc: ''
           },
           {
             label: 'Združevanje stavkov',
-            key: 'S/STR/združevanje_stavkov',
+            key: 'S/STR/združevanje-stavkov',
             desc: ''
           },
           {
             label: 'Deljenje stavkov/povedi',
-            key: 'S/STR/deljenje_stavkov',
+            key: 'S/STR/deljenje-stavkov',
             desc: ''
           },
           {
             label: 'Beseda/bes. zveza namesto stavka in obratno',
-            key: 'S/STR/besedna_zveza_stavek',
+            key: 'S/STR/besedna-zveza-stavek',
             desc: ''
           },
           {
             label: 'Preoblikovanje stavka',
-            key: 'S/STR/preoblikovanje_stavka',
+            key: 'S/STR/preoblikovanje-stavka',
             desc: ''
           },
         ],
@@ -1285,7 +1290,7 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Pomensko prazni',
-            key: 'S/DOD/pomensko_prazni',
+            key: 'S/DOD/pomensko-prazni',
             desc: ''
           },
         ],
@@ -1314,12 +1319,12 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Občna imena z veliko',
-            key: 'Z/MV/občna_imena',
+            key: 'Z/MV/občna-imena',
             desc: ''
           },
           {
             label: 'Osebna imena z malo',
-            key: 'Z/MV/osebna_imena',
+            key: 'Z/MV/osebna-imena',
             desc: ''
           },
           {
@@ -1329,27 +1334,27 @@ export const correctannot_slo: Taxonomy = [
           },
           {
             label: 'Zemljepisna imena z malo',
-            key: 'Z/MV/zemljepisna_imena',
+            key: 'Z/MV/zemljepisna-imena',
             desc: ''
           },
           {
             label: 'Stvarna imena z malo',
-            key: 'Z/MV/stvarna_imena',
+            key: 'Z/MV/stvarna-imena',
             desc: ''
           },
           {
             label: 'Premi govor',
-            key: 'Z/MV/premi_govor',
+            key: 'Z/MV/premi-govor',
             desc: ''
           },
           {
             label: 'Začetek povedi',
-            key: 'Z/MV/začetek_povedi',
+            key: 'Z/MV/začetek-povedi',
             desc: ''
           },
           {
             label: 'Hiperkorekcija za piko',
-            key: 'Z/MV/hiperkorekcija_ločila',
+            key: 'Z/MV/hiperkorekcija-ločila',
             desc: ''
           },
           {
@@ -1436,103 +1441,58 @@ export const correctannot_slo: Taxonomy = [
         subgroups: [],
         entries: [
           {
-            label: 'VEJ-stavki',
-            key: 'Z/LOC/VEJ-stavki',
+            label: 'Vejica pred priredji in odvisniki',
+            key: 'Z/LOČ/vzorec-vejica-stavki',
             desc: ''
           },
           {
-            label: 'VEJ-stclen',
-            key: 'Z/LOC/VEJ-stclen',
+            label: 'Vejica med stavčnimi členi',
+            key: 'Z/LOČ/vzorec-vejica-stavčni-členi',
             desc: ''
           },
           {
-            label: 'VEJ-veznik',
-            key: 'Z/LOC/VEJ-veznik',
+            label: 'Vejica med večdelnimi vezniki',
+            key: 'Z/LOČ/vzorec-vejica-vezniki',
             desc: ''
           },
           {
-            label: 'VEJ-vrivki',
-            key: 'Z/LOC/VEJ-vrivki',
+            label: 'Vejica pred pristavki, pastavki ipd.',
+            key: 'Z/LOČ/vzorec-vejica-pristavki',
             desc: ''
           },
           {
-            label: 'VEJ-elipsa',
-            key: 'Z/LOC/VEJ-elipsa',
+            label: 'Vejica pri elipsi povedka',
+            key: 'Z/LOČ/vzorec-vejica-elipsa-povedka',
             desc: ''
           },
           {
-            label: 'PrimerjavaKOT',
-            key: 'Z/LOC/primerjavaKOT',
+            label: 'Vejica pri primerjavi s kot',
+            key: 'Z/LOČ/vzorec-vejica-kot',
             desc: ''
           },
           {
-            label: 'PrimerjaveKOT',
-            key: 'Z/LOC/primerjaveKOT',
+            label: 'Vejica v prirednih zvezah',
+            key: 'Z/LOČ/vzorec-vejica-priredja-zvez',
             desc: ''
           },
           {
-            label: 'PrirednaBZ',
-            key: 'Z/LOC/prirednaBZ',
+            label: 'Vejica med prirednimi odvisniki',
+            key: 'Z/LOČ/vzorec-vejica-priredja-odvisnikov',
             desc: ''
           },
           {
-            label: 'Priredni-odvisniki',
-            key: 'Z/LOC/priredni-odvisniki',
+            label: 'Vejica pri vrinjenem odvisniku',
+            key: 'Z/LOČ/vzorec-vejica-vrinjen-odvisnik',
             desc: ''
           },
           {
-            label: 'Vrinjen-odvisnik',
-            key: 'Z/LOC/vrinjen-odvisnik',
-            desc: ''
-          },
-          {
-            label: 'Hiperkorekcija',
-            key: 'Z/LOC/hiperkorekcija',
-            desc: ''
-          },
-          {
-            label: 'Clenek+veznik',
-            key: 'Z/LOC/clenek+veznik',
-            desc: ''
-          },
-          {
-            label: 'Glede',
-            key: 'Z/LOC/glede',
-            desc: ''
-          },
-          {
-            label: 'Pridevniski-niz',
-            key: 'Z/LOC/pridevniski-niz',
-            desc: ''
-          },
-          {
-            label: 'Se-posebej',
-            key: 'Z/LOC/se-posebej',
-            desc: ''
-          },
-          {
-            label: 'Z-imenom',
-            key: 'Z/LOC/z-imenom',
-            desc: ''
-          },
-          {
-            label: 'Polstavek',
-            key: 'Z/LOC/polstavek',
-            desc: ''
-          },
-          {
-            label: 'Drugo',
-            key: 'Z/LOC/drugo',
+            label: 'Vejica v pridevniškem nizu',
+            key: 'Z/LOČ/vzorec-vejica-pridevniški-niz',
             desc: ''
           },
           {
             label: 'Nerazvrščena ločila',
-            key: 'Z/LOC/NERAZ',
-            desc: ''
-          },
-          {
-            label: 'Nerelevantno',
-            key: 'Z/LOC/NEREL',
+            key: 'Z/LOČ/nerazvrščeno',
             desc: ''
           },
         ],
