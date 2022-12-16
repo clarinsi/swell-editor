@@ -1,27 +1,18 @@
-# SweLL normalization editor
+# A fork of [swell-editor](https://github.com/spraakbanken/swell-editor)
 
-This is an editor for pseudonymizing, normalising, and correction annotating learner texts.
+## Description
+Swell and Svala are state-of-the-art tools for the creation of language resources that include language modifications. Svala ([Wirén 2019](https://www.diva-portal.org/smash/get/diva2:1332091/FULLTEXT01.pdf)) is a tool for user-friendly pseudonymising, normalising (correcting), and marking language corrections in learners' texts. It is part of the platform SweLL ([Volodina et al. 2019](https://nejlt.ep.liu.se/article/view/1374)), which also allows the management of workflows for text collection and annotation. The openly available tools that were originally developed for teaching Swedish as L2, were localised and adapted for Slovene as part of the national project [Development of Slovene in a Digital Environment](https://rsdo.slovenscina.eu/en). We decided to prioritise the transfer of the modules that enables transcription, simple anonymisation and annotation of language corrections, leaving the more advanced features aside. The current adaptation serves the upgrading of two corpora for Slovene: Šolar, the developmental corpus of Slovene as L1 ([Arhar Holdt et al. 2022](https://www.clarin.si/repository/xmlui/handle/11356/1589)), and KOST, the learner corpus of Slovene as L2 ([Stritar Kučuk 2022](https://centerslo.si/wp-content/uploads/2022/11/Stritar-Kucuk_Obdobja-41.pdf)). The adapted program is available at [https://orodja.cjvt.si/svala](https://orodja.cjvt.si/svala).
 
-Actually it is a glorified diff editor which makes a word-aligned parallel text, like this:
+## Differences to original [swell-editor](https://github.com/spraakbanken/swell-editor)
 
-![](https://ws.spraakbanken.gu.se/ws/swell/png?He_get_to_cleaned_his~his_son~his_.//He_got_his~his_son~his_to_clean_the~_room~_.)
+The differences of this fork to the original are:
+* Added multilinguality: The program now has the option to support multiple languages. We added Slovenian translations, but other languages could now be easily introduced by writing `translation.json` file for desired language.
+* Expanded grouping to error tags: We expanded option to group error tags together to up to two levels. For example, we now may have group of "Syntax" that has subgroup "Redundant linguistic elements" with error tag "Adverb". We also added option to toggle groups and subgroups.
+* Adapted taxonomy: We created two new sets of error annotations. One for developmental corpus of Slovene as L1 (Šolar) and other for the learner corpus of Slovene (KOST)
+* Added file saving: We transitioned from backend connections to a server to saving and loading using file system.
+* Other smaller modifications, e.g. we re-arranged the "show options" dropdown and enabled the possibility that the error tags are presented in the taxonomy with more intuitive names for better user-friendliness.
 
-This tool is in active development, and described further here:
-
-* [Development version](https://spraakbanken.gu.se/swell/dev)
-* [Tool description](https://spraakbanken.gu.se/swell/article) Dan Rosén
-* [Towards Transformation-based Annotation of Norm Deviations in an Infrastructure for Research on Swedish as a Second Language](https://spraakbanken.gu.se/swell/docs/swell-lrec2018.pdf) Dan Rosén, Mats Wirén, Elena Volodina, submitted to LREC 2018.
-* [Representation av avvikelseannotationer](https://spraakbanken.gu.se/swell/representation-2017/) (in Swedish)
-
-Slides, change slides with up and down arrows:
-
-* [SweLL meeting January 2018](https://spraakbanken.gu.se/swell/jan2018) (in Swedish, "print mode" on p)
-* [CLT retreat 2017](https://spraakbanken.gu.se/swell/clt-2017)
-* [L2 Clarin workshop 2017](https://spraakbanken.gu.se/swell/clarin-2017)
-* [En förhandstitt på verktyget för normalisering av andraspråkstexter](https://github.com/spraakbanken/swell-editor/blob/c13475d2e14a53a3e86e5b0f0861f9dbf5411af3/talk/hws/hws-talk.pdf) (pdf, in Swedish)
-
-![Build status](https://travis-ci.org/spraakbanken/swell-editor.svg?branch=master)
-
+## Setup
 ### Running the tool
 
 ```
@@ -62,43 +53,17 @@ _SB-specific_:
 yarn run deploy
 ```
 
+### Docker
+Build an image:
+```
+docker build github.com/clarinsi/swell-editor -t swell-editor-image
+```
+
+Run image:
+```
+docker run --name swell-container -d -p 3456:80 swell-editor-image
+```
+
 ### Updating the taxonomy
 
-The intent is that the taxonomy should come from the backend. However, it can also be updated in `src/Editor/Config.ts` and then deployed (see above).
-
-## Backend connection
-
-The url hash contains two fields for talking to a backend: `backend` and `essay`.
-The `backend` should a base64 encoded url. You can set this from the developer console like this:
-
-```typescript
-store.update({
-  backend: 'https://spraakbanken.gu.se/swell/dev-backend/annotation/essay/',
-  essay: 'K0Rv',
-})
-```
-
-The store is only fetched on page load, so you'll need to reload the page after setting this.
-
-The `start_mode` flag can be `anon`, `norm` or `corr` and will start the editor in that mode.
-
-Note that while there is a backend connected it is not possible to change mode
-(anonymisation or normalisation) or edit the source text.
-
-The `backurl` will add a _back_ link to an url (base64-encoded).
-
-## Images of Spaghetti as a Service
-
-There is also a web-service that takes a compact description of a parallell corpus sentence and renders it as a png, like this:
-
-![](https://ws.spraakbanken.gu.se/ws/swell/png?Images~Images_of~Images_Spaghetti~Images_as_a~a_Service~%40t103//Spaghettibilder~Images_som_en~a_tj%C3%A4nst%40t103~%40t103)
-
-This is run with
-
-```
-yarn run iosaas
-```
-
-The frontend and backend dependencies are shared in one big package.json for convenience.
-
-_SB-specific_: The web service is run on `kork` using supervisord on port 8003 and its htaccess file is on k2 at `/export/htdocs_sbws/ws/swell`.
+Taxonomy may be updated in `src/Editor/Config.ts` and then deployed (see above).
