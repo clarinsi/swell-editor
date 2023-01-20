@@ -5,6 +5,7 @@
   "author": "Dan Rosén",
   "description": "Editor for normalising second-language learner texts",
   "dependencies": {
+    "@fontsource/ibm-plex-sans": "^4.5.13",
     "cm-resize": "^0.2.2",
     "codemirror": "^5.64.0",
     "compression": "^1.7.2",

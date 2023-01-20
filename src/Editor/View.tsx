@@ -28,6 +28,9 @@ import {anonService} from '../AnonService'
 
 import '../i18n/config';
 import { Translation, getI18n } from 'react-i18next';
+import { none } from 'ramda'
+
+import "@fontsource/ibm-plex-sans";
 
 typestyle.cssRaw(`
 body > div {
@@ -35,14 +38,14 @@ body > div {
 }
 `)
 
-const header_height = '32px'
-const footer_height = '26px'
+const header_height = '172px'
+const footer_height = '384px'
 
 const i18n = getI18n()
 
 const topStyle = typestyle.style({
   ...Utils.debugName('topStyle'),
-  fontFamily: 'lato, sans-serif, DejaVu Sans',
+  fontFamily: '"IBM Plex Sans", sans-serif',
   color: '#222',
   display: 'grid',
 
@@ -66,12 +69,62 @@ const topStyle = typestyle.style({
         },
       }))
     ),
-    '& .header': {
+    '& .header.box': {
       position: 'sticky',
       top: 0,
       zIndex: 20,
+      padding:0,
       paddingBottom: '5px',
       marginBottom: '5px',
+      borderTop: 'none',
+      height: 'auto'
+    },
+    '& .red-header': {
+      position:'relative',
+      height: '64px',
+      paddingLeft: '32px',
+      background: '#e12a26',
+    },
+    '& .red-header .logo img': {
+      marginTop: '16px',
+      height: '32px',
+    },
+    '& .red-header-menu-items': {
+      position: 'absolute',
+      top: 0,
+      right: '32px',
+    },
+    '& .red-header-menu-items>button,.red-header-menu-items>a': {
+      color: 'white',
+      lineHeight: '64px',
+      background: 'none',
+      border: 'none',
+      textDecoration: 'none',
+      margin:0,
+      marginLeft:'24px',
+      fontSize: '16px',
+      padding:0,
+      display:'inline-block'
+    },
+    '& .white-header': {
+      background:'white',
+      height:'72px',
+      position:'relative',
+      textAlign:'right',
+      paddingRight:'24px',
+    },
+    '& .white-header-share': {
+      cursor:'pointer',
+      display: 'inline-block',
+      marginTop: '24px',
+      marginLeft:'16px',
+      padding:'4px',
+    },
+    '& .white-header-share:hover': {
+      background:'#f5f5f5'
+    },
+    '& .white-header-share img': {
+      width:'24px',
     },
     '& .sidekick > div': {
       top: `${header_height}`,
@@ -79,10 +132,76 @@ const topStyle = typestyle.style({
     '& .content': {
       height: '100%',
     },
-    '& .footer': {
-      position: 'sticky',
+    '& .footer.box': {
+      background: '#161616',
       bottom: 0,
       zIndex: 20,
+      borderTop:'none',
+      color: 'white'
+    },
+    '& .footer h5': {
+      paddingTop: '24px',
+      color: '#b3b3b3',
+      fontSize: '12px',
+      lineHeight: '1.33',
+      letterSpacing: '0.32px',
+      fontWeight: 'normal'
+    },
+    '& .footer .footer-container': {
+      display: 'flex',
+      width: '100%',
+      paddingLeft:'32px',
+      paddingRight:'32px',
+    },
+    '& .footer .footer-column-1': {
+      position: 'relative',
+      width: '12.5%',
+      height: '224px',
+      display: 'block',
+      flex: '0 0 12.5%',
+      borderLeft: '1px solid #666666',
+      paddingLeft: '24px',
+    },
+    '& .footer .footer-column-2': {
+      position: 'relative',
+      width: '25%',
+      height: '224px',
+      display: 'block',
+      flex: '0 0 25%',
+      borderLeft: '1px solid #666666',
+      paddingLeft: '24px',
+    },
+    '& .footer .footer-column-2 p': {
+      fontSize: '12px',
+      fontWeight: 'normal',
+      lineHeight: 1.33,
+      letterSpacing: '0.32px',
+      marginTop:0,
+      marginBottom:0,
+      
+    },
+    '& .footer .footer-column-2 p a': {
+      color: 'white',
+      textDecoration: 'none',
+    },
+    '& .footer .footer-column-2 p.text-grey-70': {
+      color: '#b3b3b3',
+      
+    },
+    '& .footer .to-bottom': {
+      position: 'absolute',
+      bottom: '0',
+      left: '24px',
+      right: '24px',
+    },
+    '& .footer .footer-column-1 .to-bottom': {
+      maxWidth: '100px;'
+    },
+    '& .footer .footer-column-2 .to-bottom': {
+      maxWidth: '300px;'
+    },
+    '& .footer img': {
+      width: '100%',
     },
     '& .menu .box': {
       position: 'absolute',
@@ -119,7 +238,7 @@ const topStyle = typestyle.style({
       height: 'auto',
       paddingBottom: '1em',
       lineHeight: '1.5em',
-      fontFamily: "'Lato', sans-serif",
+      fontFamily: '"IBM Plex Sans", sans-serif',
     },
     '& .CodeMirror .cm-resize-handle': {
       display: 'block',
@@ -199,6 +318,7 @@ const topStyle = typestyle.style({
       background: 'hsla(220,65%,65%, .3)',
     },
     '& button': {
+      fontFamily: '"IBM Plex Sans", sans-serif',
       fontSize: '0.85em',
       marginRight: '5px',
       marginBottom: '5px',
@@ -494,13 +614,46 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
 
     return (
       <React.Fragment>
+        <div className={'red-header'}>
+          <a href={"/"} className={'logo'}><img src={require("../../static/logo.svg")}/></a>
+          <div className={'red-header-menu-items'}>
+            <a href="">{i18n.t('redHeader.about')}</a>
+            {
+              Button(
+                i18n.t('headerButtons.opposite_language'),
+                i18n.t('headerButtons.opposite_language_description'),
+                () => {
+                  
+                  if(i18n.language === 'en-US'){
+                    i18n.changeLanguage('sl');
+                  } else {
+                    i18n.changeLanguage('en-US');
+                  }
+                  window.location.reload();
+                }
+              )}
+              </div>
+        </div>
+        
+        <div className={'white-header'}>
+            <a className={'white-header-share'} onClick={e => {
+              window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href)+'&fbrefresh=true','facebook-share-dialog','width=626,height=436')
+            }}>
+                <img src={require("../../static/logo--facebook.svg")} alt="Facebook" />
+            </a>
+            <a className={'white-header-share'} onClick={e => {
+              window.open("https://twitter.com/share?url="+encodeURIComponent(window.location.href)+"&text="+document.title+'&hashtags=cjvt,svala', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;
+            }}>
+                <img src={require("../../static/logo--twitter.svg")} alt="Twitter"/>
+            </a>
+        </div>
         <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
           <div>
             {Button(i18n.t('headerButtons.undo'), '', history.undo, history.canUndo())}
             {Button(i18n.t('headerButtons.redo'), '', history.redo, history.canRedo())}
           </div>
           <div style={{fontWeight: 'bold'}}>
-            SVALA {Model.mode_label(state.mode)} { state.import_file == undefined ? '' : `(${state.import_file})` } {state.essay ? `– essay ${state.essay}` : ''}{' '}
+            {Model.mode_label(state.mode)} { state.import_file == undefined ? '' : `(${state.import_file})` } {state.essay ? `– essay ${state.essay}` : ''}{' '}
             {!Model.can_modify(state).state && '(read-only)'}
           </div>
           <div>
@@ -521,20 +674,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
                 back
               </a>
             )}
-            {
-              Button(
-                i18n.t('headerButtons.opposite_language'),
-                i18n.t('headerButtons.opposite_language_description'),
-                () => {
-                  
-                  if(i18n.language === 'en-US'){
-                    i18n.changeLanguage('sl');
-                  } else {
-                    i18n.changeLanguage('en-US');
-                  }
-                  window.location.reload();
-                }
-              )}
+            
             {state.done !== undefined &&
               !Model.inAnonfixMode(state) &&
               Button(state.done ? 'not done' : 'done', 'toggle between done and not done', () =>
@@ -655,30 +795,78 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       </div>
       {Summary(store)}
       <div className="footer box">
+        <div className="footer-container">
+        <div className="footer-column-1">
+          <h5>Izdal</h5>
+          <div className="to-bottom">
+            <a className="uni-logo" href="https://www.uni-lj.si/" target="_blank">
+                <img src={require("../../static/unilj_logo.svg")}/>
+            </a>
+          </div>
+        </div>
+        <div className="footer-column-1">
+          <h5>Upravljanje vira</h5>
+          <div className="to-bottom" style={{bottom: '-11.5%'}}>
+            <p>
+                <a href="https://www.cjvt.si" target="_blank" >
+                    <img src={require("../../static/cjvt_logo.svg")} />
+                </a>
+            </p>
+          </div>
+        </div>
+        <div className="footer-column-1">
+          <h5>Podporniki</h5>
+          <div className="to-bottom" style={{bottom: '-11.5%'}}>
+              <p style={{marginBottom: '8px'}}>
+                  <a href="https://slovenscina.eu/" target="_blank">
+                      <img src={require("../../static/rsdo_logo.svg")} style={{width: '70%'}}/>
+                  </a>
+              </p>
+              <p style={{marginBottom: '8px'}}>
+                  <a href="https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kulturo/" target="_blank">
+                      <img src={require("../../static/mzk.svg")}/>
+                  </a>
+              </p>
+              <p>
+                  <a href="https://www.arrs.si/sl/" target="_blank">
+                      <img src={require("../../static/ARRSLogo_2016.svg")}/>
+                  </a>
+              </p>
+          </div>
+        </div>
+        <div className="footer-column-1">
+          <h5>Prenos vira</h5>
+          <div className="to-bottom">
+            <p><a href="https://github.com/clarinsi/classla" target="_blank"><img src={require("../../static/clarin_logo.svg")} /></a></p>
+          </div>
+        </div>
+        <div className="footer-column-2">
+          <h5>Dostopnost vira</h5>
+          <div className="to-bottom">
+            <p>Delo je dostopno pod licenco <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a></p>
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src={require("../../static/by-sa.svg")} style={{width:'40%',marginTop:'16px'}}/></a>
+          </div>
+        </div>
+        <div className="footer-column-2">
+          <h5>Kontakt</h5>
+          <div className="to-bottom">
+            <div style={{float:'left',width:'45%'}}>
+                <p>Center za jezikovne vire in tehnologije</p>
+                <br/>
+                <p className="text-grey-70">Večna pot 113<br/>
+                    SI-1000 Ljubljana</p>
+            </div>
+            <div style={{float:'right',width:'45%'}}>
+                <p className="text-grey-70">Telefon</p>
+                <p><a href="">+386 1 479 82 99</a></p>
+                <br/>
+                <p className="text-grey-70">Email</p>
+                <p><a href="mailto:info@cjvt.si">info@cjvt.si</a></p>
+            </div>
+        </div>
+        </div>
+        </div>
         <span style={{opacity: 0.8, fontSize: '0.9em'}}>
-          <b>SVALA:</b>{' '}
-          <a href="https://github.com/spraakbanken/swell-editor" target="_blank">
-            <i>Repo</i>
-          </a>{' '}
-          <a href="https://github.com/spraakbanken/swell-editor/issues" target="_blank">
-            <i>Issues</i>
-          </a>{' '}
-          <Translation>{(t) => <b>{t('main.link_to_Articles')}</b>}</Translation>{' '}
-          <a
-            href="http://www.ep.liu.se/ecp/159/023/ecp18159023.pdf"
-            target="_blank">
-            <i>Svala</i>
-          </a>{' '}
-          <a
-            href="https://spraakbanken.gu.se/sites/spraakbanken.gu.se/files/Annotation_of_learner_corpora_SweLL.pdf"
-            target="_blank">
-            <i>Swell</i>
-          </a>{' '}
-          <a
-            href="http://www.diva-portal.org/smash/get/diva2:1266934/FULLTEXT01.pdf"
-            target="_blank">
-            <i>Anonymization</i>
-          </a>
           {state.essay && state.backend && (
             <span style={{float: 'right', opacity: 0.9}}>
               {`${state.version ? 'revision ' + state.version + ' of' : 'saving'} essay ${
@@ -686,7 +874,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               } at `}
               <code style={{fontSize: '0.95em'}}>{state.backend}</code>
             </span>
-          )}
+          )} 
         </span>
       </div>
     </div>

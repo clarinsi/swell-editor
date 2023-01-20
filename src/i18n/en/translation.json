@@ -1,4 +1,7 @@
 {
+  "redHeader": {
+    "about":"About"
+  },
   "summary": {
   	"document_comment": "Document comment:",
   },
@@ -24,7 +27,7 @@
   "headerButtons": {
     "undo": "undo",
     "redo": "redo",
-    "opposite_language": "SL",
+    "opposite_language": "Slovenščina",
     "opposite_language_description": "change language to Slovenian",
     "show_options": "show options",
   },
@@ -42,8 +45,8 @@
     "show_full_graph": "show full graph",
     "show_full_graph_description": "render the full graph (may be slow, please have patience)",
     "switch_to": "switch to",
-    "correction_annotation_Solar": "correction annotation Solar",
-    "correction_annotation_Kost": "correction annotation Kost",
+    "correction_annotation_Solar": "Correction annotation Solar",
+    "correction_annotation_Kost": "Correction annotation Kost",
     "import_graph": "import graph",
     "export_graph": "export graph",
     "graph": "graph",

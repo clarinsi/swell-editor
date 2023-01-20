@@ -1,4 +1,7 @@
 {
+  "redHeader": {
+    "about":"O orodju"
+  },
   "summary": {
   	"document_comment": "Komentarji:",
   },
@@ -24,7 +27,7 @@
   "headerButtons": {
     "undo": "razveljavi",
     "redo": "ponovi",
-    "opposite_language": "EN",
+    "opposite_language": "English",
     "opposite_language_description": "spremeni jezik v angleščino",
     "show_options": "pokaži možnosti",
   },
@@ -42,8 +45,8 @@
     "show_full_graph": "pokaži celoten graf",
     "show_full_graph_description": "izdela celoten graf (postopek lahko traja dlje časa)",
     "switch_to": "preklopi na",
-    "correction_annotation_Solar": "oznake sistema 'Šolar'",
-    "correction_annotation_Kost": "oznake sistema 'KOST'",
+    "correction_annotation_Solar": "Oznake sistema 'Šolar'",
+    "correction_annotation_Kost": "Oznake sistema 'KOST'",
     "import_graph": "uvozi podatke",
     "export_graph": "izvozi podatke",
     "graph": "graf v formatu json",
