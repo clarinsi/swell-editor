@@ -135,9 +135,8 @@ const topStyle = typestyle.style({
     '& .footer.box': {
       background: '#161616',
       bottom: 0,
-      zIndex: 20,
       borderTop:'none',
-      color: 'white'
+      color: 'white',
     },
     '& .footer h5': {
       paddingTop: '24px',
@@ -797,7 +796,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       <div className="footer box">
         <div className="footer-container">
         <div className="footer-column-1">
-          <h5>Izdal</h5>
+          <h5>{i18n.t('footer.issued_by')}</h5>
           <div className="to-bottom">
             <a className="uni-logo" href="https://www.uni-lj.si/" target="_blank">
                 <img src={require("../../static/unilj_logo.svg")}/>
@@ -805,7 +804,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
           </div>
         </div>
         <div className="footer-column-1">
-          <h5>Upravljanje vira</h5>
+          <h5>{i18n.t('footer.provided_by')}</h5>
           <div className="to-bottom" style={{bottom: '-11.5%'}}>
             <p>
                 <a href="https://www.cjvt.si" target="_blank" >
@@ -815,7 +814,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
           </div>
         </div>
         <div className="footer-column-1">
-          <h5>Podporniki</h5>
+          <h5>{i18n.t('footer.supported_by')}</h5>
           <div className="to-bottom" style={{bottom: '-11.5%'}}>
               <p style={{marginBottom: '8px'}}>
                   <a href="https://slovenscina.eu/" target="_blank">
@@ -835,20 +834,20 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
           </div>
         </div>
         <div className="footer-column-1">
-          <h5>Prenos vira</h5>
+          <h5>{i18n.t('footer.download')}</h5>
           <div className="to-bottom">
             <p><a href="https://github.com/clarinsi/classla" target="_blank"><img src={require("../../static/clarin_logo.svg")} /></a></p>
           </div>
         </div>
         <div className="footer-column-2">
-          <h5>Dostopnost vira</h5>
+          <h5>{i18n.t('footer.license')}</h5>
           <div className="to-bottom">
-            <p>Delo je dostopno pod licenco <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a></p>
+            <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">{i18n.t('footer.license_text')}</a></p>
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img src={require("../../static/by-sa.svg")} style={{width:'40%',marginTop:'16px'}}/></a>
           </div>
         </div>
         <div className="footer-column-2">
-          <h5>Kontakt</h5>
+          <h5>{i18n.t('footer.contact')}</h5>
           <div className="to-bottom">
             <div style={{float:'left',width:'45%'}}>
                 <p>Center za jezikovne vire in tehnologije</p>
@@ -857,7 +856,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
                     SI-1000 Ljubljana</p>
             </div>
             <div style={{float:'right',width:'45%'}}>
-                <p className="text-grey-70">Telefon</p>
+                <p className="text-grey-70">{i18n.t('footer.phone')}</p>
                 <p><a href="">+386 1 479 82 99</a></p>
                 <br/>
                 <p className="text-grey-70">Email</p>

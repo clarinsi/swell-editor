@@ -68,5 +68,15 @@
   },
   "other": {
     "enter_filter_text": "Enter filter text",
+  },
+  "footer": {
+    "issued_by": "Issued by",
+    "provided_by": "Provided by",
+    "supported_by": "Supported by",
+    "download": "Download",
+    "license": "License",
+    "license_text": "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+    "contact": "Contact",
+    "phone": "Phone"
   }
 }

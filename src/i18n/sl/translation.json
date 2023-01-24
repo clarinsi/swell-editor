@@ -68,5 +68,15 @@
   },
   "other": {
     "enter_filter_text": "vpišite oznako",
+  },
+  "footer": {
+    "issued_by": "Izdal",
+    "provided_by": "Upravljanje vira",
+    "supported_by": "Podporniki",
+    "download": "Prenos vira",
+    "license": "Dostopnost vira",
+    "license_text": "Delo je dostopno pod licenco Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+    "contact": "Kontakt",
+    "phone": "Telefon"
   }
 }
