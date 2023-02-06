@@ -358,6 +358,9 @@ const topStyle = typestyle.style({
     '& .close:hover': {
       opacity: 0.8,
     },
+    '& .about img': {
+      width: "100%",
+    },
   },
 })
 
@@ -456,6 +459,109 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
     )
   }
 
+  function about() {
+    return (i18n.language === 'sl')?(
+    <div className="about">
+      <h1>CJVT Svala in izvorna Svala</h1>
+      <p>Orodje CJVT Svala je nastalo kot lokalizirana in adaptirana različica <a href="https://github.com/spraakbanken/swell-editor" target="_blank">odprto dostopnega orodja Svala</a>. Največja prednost orodja je, da združuje več korakov delotoka izgradnje korpusa usvajanja jezika, in sicer psevdomizacijo, normalizacijo in označevanje jezikovnih popravkov v besedilih. Poleg tega portal SweLL, v katerega je orodje Svala vključeno, skrbi še za vodenje delotokov za zbiranje in urejanje korpusnega gradiva (<a href="https://www.diva-portal.org/smash/get/diva2:1332091/FULLTEXT01.pdf" target='_blank'>Wirén 2019; Volodina et al. 2019</a>).</p>
+      <p>Orodje smo za slovenščino prilagodili v okviru projekta <a href="https://rsdo.slovenscina.eu/" target="_blank">Razvoj slovenščine v digitalnem okolju</a>, ki sta ga med letoma 2020 in 2023 sofinancirali Republika Slovenija in Evropska unija iz Evropskega sklada za regionalni razvoj. V luči trenutnih potreb smo v CJVT Svala prioritetno prenesli funkcionalnosti za transkripcijo, preprosto anonimizacijo in označevanje napak, dodatne module pa smo pustili za bodoči razvoj.</p>
+      <p>Več o adaptaciji Svale za slovenski prostor je mogoče prebrati v prispevku <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a>.</p>
+      <p>Kot odprtokodno orodje je na voljo na repozitoriju GitHub: <a href="https://github.com/clarinsi/swell-editor" target="_blank">https://github.com/clarinsi/swell-editor</a>.</p>
+      <p>Citiranje orodja za raziskovalne namene: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan (2022): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.0, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, dostop.</p>
+
+      <p>Zasnova portala: Špela Arhar Holdt, Iztok Kosem</p>
+      <p>Razvoj adaptiranega programa: Luka Krsnik, Leon Noe Jovan</p>
+      <p>Evalvacija portala: Mojca Stritar Kučuk</p>
+
+      <h1>Reference</h1>
+      <p>ARHAR HOLDT, Špela, KOSEM, Iztok, STRITAR KUČUK, Mojca. Metode in orodja za lažjo pripravo korpusov usvajanja jezika. V: PIRIH SVETINA, Nataša (ur.), FERBEŽAR, Ina (ur.). <i>Na stičišču svetov : slovenščina kot drugi in tuji jezik</i>. 1. natis. Ljubljana: Založba Univerze, 2022a. Str. 23-30, ilustr. Zbirka Obdobja, 41. <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf</a>.</p>
+      <p>ARHAR HOLDT, Špela, LAVRIČ, Polona, ROBLEK, Rebeka, GOLI Teja, 2022b. Kategorizacija učiteljskih popravkov: Smernice za označevanje korpusa Šolar, v1.1. <a href="http://hdl.handle.net/11356/1589" target="_blank">http://hdl.handle.net/11356/1589</a>.</p>
+      <p>STRITAR KUČUK, Mojca, 2022: KOST, Korpus slovenščine kot tujega jezika: Priročnik za označevanje napak, delovna verzija. <a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf</a>. </p>
+      <p>VOLODINA, Elena, GRANSTEDT, Lena, MATSSON, Arild, MEGYESI, Beáta, PILÁN, Ildikó, PRENTICE, Julia, ROSÉN, Dan, RUDEBECK, Lisa, SCHENSTRÖM, Carl-Johan, SUNDBERG, Gunlög, WIRÉN, Mats, 2019: The SweLL Language Learner Corpus: From Design to Annotation. Northern European Journal of Language Technology 6. 67–104.</p>
+      <p>WIRÉN, Mats, MATSSON, Arild, ROSÉN, Dan, VOLODINA, Elena, 2019: SVALA: Annotation of Second-Language Learner Text Based on Mostly Automatic Alignment of Parallel Corpora. Inguna Skadina, Maria Eskevich (ur.): Selected papers from the CLARIN Annual Conference 2018, Pisa, 8–10 October 2018. Linköping: Linköping University Electronic Press. 227–239.</p>
+
+      <h1>Navodila za uporabo</h1>
+      <h2>1. Transkripcija in popravljanje</h2>
+      <p>Za besedilo sta na voljo dve okenci: »izvorno besedilo« in »popravljeno besedilo«. Prikaz okenc vklopimo s klikom na gumb »pokaži/skrij izvorno besedilo« »pokaži/skrij popravljeno besedilo« v spustnem seznamu »pokaži možnosti. Okencu za besedilo lahko spremenimo velikost s potegom iz spodnjega desnega kota.</p>
+      <p>Z gumbom "kopiraj v popravljeno" lahko izvorno besedilo preprosto kopiramo v okence ciljnega besedila. V naslednjem koraku nato opravimo morebitne jezikovne popravke.</p>
+      <p>Spodaj je bilo učenčevo besedilo sva šle na pot popravljeno v sva šli na pot. Besedi šle in šli program avtomatsko poravna in poveže, ker sta si podobni. Vizualizacijo poravnav, ki jim pravimo tudi špageti, lahko vklopimo ali izklopimo z gumbom »pokaži povezave/skrij povezave«.</p>
+      <img src={require("../../static/about/sl_slika1.png")}/>
+
+      <h2>2. Označevanje popravkov</h2>
+      <p>S klikom na katero koli povezavo oz. špaget se odpre razdelek na levi strani vmesnika. Ta je sestavljen iz navigacijskih gumbov na vrhu, iskalnega polja na sredini in hierarhično urejenega sistema oznak spodaj.</p>
+      <p>V spustnem seznamu »pokaži možnosti« je mogoče preklapljati med dvema različnima sistemoma oznak: za korpus Šolar (<a href="https://www.clarin.si/repository/xmlui/handle/11356/1589" target="_blank">Arhar Holdt idr. 2022b</a>) in za korpus KOST (<a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">Stritar Kučuk 2022</a>).</p>
+      <p>Ko smo kliknili povezavo, lahko izberemo oznako popravka. Ime oznake lahko vpišemo v iskalno polje ali pa nanjo kliknemo v sistemu oznak. Napačne oznake lahko preprosto odstranimo tako, da izberemo povezavo in na tipkovnici pritisnemo vračalko (backspace).</p>
+      <p>Vse dodeljene oznake so alinejsko prikazane tudi v desnem delu vmesnika, kar olajša pregled nad popravki v določenem dokumentu.</p>
+      <img src={require("../../static/about/sl_slika2.png")}/>
+
+      <h2>3. Navigacija med popravki</h2>
+      <p>V zgornjem levem kotu vmesnika sta gumba »razveljavi« in »ponovi« za vsako zadnje dejanje.</p>
+      <p>Tik pod njima so gumbi, ki omogočajo enostavno navigacijo po besedilu. Gumba »prejšnja povezava« in »naslednja povezava« se uporabljata za navigacijo od ene povezave do druge (ali nazaj), gumba »prejšnja sprememba« in »naslednja sprememba« pa za navigacijo med spremembami, tj. deli besedila, ki so bili popravljeni.</p>
+
+      <h2>4. Ročno povezovanje besed in zvez</h2>
+      <p>Samodejno povezovanje ne deluje, če so popravljene besede preveč različne od izvornih ali če se število izvornih in ciljnih besed ne ujema.</p>
+      <p>V tem primeru sami kliknemo besede, ki jih želimo združiti v par ali skupino, in pritisnemo »poveži«. Povezava bo postala modra, kar nakazuje, da gre za ročno dodano povezavo.</p>
+      <p>Besedo izberemo s klikom nanjo, s klikom na povezavo pa izberemo vse besede v tej skupini. Če želimo izbrati več besed, med klikanjem držimo pritisnjeno tipko CTRL ali ⌘. Izbiranje prekličemo tako, da spustimo vse tipke in kliknemo zunaj vizualizacije špagetov.</p>
+      <p>Če so besede napačno povezane, kliknemo povezavo ali posamezne besede in pritisnemo gumb »razveži«. S tem prekinemo povezavo(-e) in omogočimo, da so besede na voljo za novo povezovanje.</p>
+      <p>Z gumbom »avtomatsko« lahko ponovno vzpostavimo samodejno povezovanje besed in enot.</p>
+      <img src={require("../../static/about/sl_slika3.png")}/>
+
+      <h2>5. Druge izbire v spustnem seznamu »pokaži možnosti«</h2>
+      <p>V spustnem seznamu »pokaži možnosti« sta gumba »uvozi podatke« in »izvozi podatke«, tj. datoteke v formatu json. Možno je tudi izbrati »prikaži graf v formatu json« in »pokaži razliko«, ki prikaže razlike, nastale med popravljanjem. Možnosti »prilagodi graf« in »pokaži celoten graf« se uporabljata pri daljših povedih, kjer je vizualizacija s špageti manj pregledna. Možne so tudi prilagoditve za vizualizacijo teh povezav, in sicer je »skrij izvorno v grafu« ter »skrij popravljeno v grafu«.</p>
+    </div>) :
+    (
+      <div className="about">
+      <h1>From Svala to CJVT Svala</h1>
+      <p>The CJVT Svala tool was born as a localized and customized version of the open-source <a href="https://github.com/spraakbanken/swell-editor" target="_blank">Svala tool</a>. developed by Swedish researchers to construct the Swedish learner corpus <a href="https://github.com/spraakbanken/swell-release-v1" target="_blank">SweLL</a>. The tool streamlines several crucial steps in the building process of both learner and development corpora, including pseudonymization, normalization, and annotation of linguistic corrections in texts. Moreover, it integrates with the SweLL portal, which manages the workflows for collecting and editing corpus material (<a href="https://www.diva-portal.org/smash/get/diva2:1332091/FULLTEXT01.pdf" target='_blank'>Wirén 2019; Volodina et al. 2019</a>).</p>
+      <p>The tool has been adapted for Slovene within the framework of the Development of Slovene in the Digital Environment (DSDE) project co-financed by the Republic of Slovenia and the European Union (the European Regional Development Fund) between 2020 and 2023. In light of current needs, we have adopted the transcription, simple anonymization and error annotation functionalities, while leaving more advanced modules, i.e. automated anonymization and annotation workflow management, for prospective development opportunities.</p>
+      <p>More on the adaptation of Svala for Slovenian can be found in <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a> (in Slovene only).</p>
+      <p>It is available as an open-source tool on GitHub: <a href="https://github.com/clarinsi/swell-editor" target="_blank">https://github.com/clarinsi/swell-editor</a>.</p>
+      <p>To cite the CJVT Svala tool: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan (2022): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.0, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, access.</p>
+
+      <p>Concept of the portal: Špela Arhar Holdt, Iztok Kosem</p>
+      <p>Adaptation of the tool: Luka Krsnik, Leon Noe Jovan</p>
+      <p>Evaluation of the portal: Mojca Stritar Kučuk</p>
+
+      <h1>Reference list</h1>
+      <p>ARHAR HOLDT, Špela, KOSEM, Iztok, STRITAR KUČUK, Mojca. Metode in orodja za lažjo pripravo korpusov usvajanja jezika. V: PIRIH SVETINA, Nataša (ur.), FERBEŽAR, Ina (ur.). <i>Na stičišču svetov : slovenščina kot drugi in tuji jezik</i>. 1. natis. Ljubljana: Založba Univerze, 2022a. Str. 23-30, ilustr. Zbirka Obdobja, 41. <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf</a>.</p>
+      <p>ARHAR HOLDT, Špela, LAVRIČ, Polona, ROBLEK, Rebeka, GOLI Teja, 2022b. Kategorizacija učiteljskih popravkov: Smernice za označevanje korpusa Šolar, v1.1. <a href="http://hdl.handle.net/11356/1589" target="_blank">http://hdl.handle.net/11356/1589</a>.</p>
+      <p>STRITAR KUČUK, Mojca, 2022: KOST, Korpus slovenščine kot tujega jezika: Priročnik za označevanje napak, delovna verzija. <a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf</a>. </p>
+      <p>VOLODINA, Elena, GRANSTEDT, Lena, MATSSON, Arild, MEGYESI, Beáta, PILÁN, Ildikó, PRENTICE, Julia, ROSÉN, Dan, RUDEBECK, Lisa, SCHENSTRÖM, Carl-Johan, SUNDBERG, Gunlög, WIRÉN, Mats, 2019: The SweLL Language Learner Corpus: From Design to Annotation. Northern European Journal of Language Technology 6. 67–104.</p>
+      <p>WIRÉN, Mats, MATSSON, Arild, ROSÉN, Dan, VOLODINA, Elena, 2019: SVALA: Annotation of Second-Language Learner Text Based on Mostly Automatic Alignment of Parallel Corpora. Inguna Skadina, Maria Eskevich (ur.): Selected papers from the CLARIN Annual Conference 2018, Pisa, 8–10 October 2018. Linköping: Linköping University Electronic Press. 227–239.</p>
+
+      <h1>User Manual</h1>
+      <h2>1. Transcription and Error Correction</h2>
+      <p>There are two text boxes: »source text« box and »target text« box. The visibility of the boxes is toggled by clicking »show/hide source text« and »show/hide target text« in the »show options« dropdown menu. The text fields can be resized by dragging the lower right corner of the field.</p>
+      <p>By using the button »copy to target«, the source text is copied into the target text box - this is where adding corrections takes place.</p>
+      <p>On the picture below, you can see that the learner's text a example was corrected into an example. The word pairs a and an will automatically be aligned in the graph under the target box because the words are similar. The graph visualisation, also called »spaghettis«, can be toggled on or off by clicking the button »Spaghetti mode enable/disable«.</p>
+      <img src={require("../../static/about/en_slika1.png")}/>
+
+      <h2>2. Labelling of Corrections</h2>
+      <p>A click on any link in the spaghetti visualisation will open a section on the left side of the interface. It consists of navigation buttons on the top, a search box in the middle, and a hierarchically arranged system of labels below.</p>
+      <p>In the »show options« dropdown menu, it is possible to switch between two different annotation systems: for the Šolar corpus (<a href="https://www.clarin.si/repository/xmlui/handle/11356/1589" target="_blank">Arhar Holdt idr. 2022b</a>; in Slovene only) and for the KOST corpus (<a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">Stritar Kučuk 2022</a>; in Slovene only).</p>
+      <p>When you have a link selected you can attach labels to it. You can either write the label name into the search box or click on it in the annotation system. You can easily remove wrong labels by selecting the link and pressing the backspace key on the keyboard.</p>
+      <p>Note that all assigned labels appear concisely in the right part of the interface to ease the overview of corrections in the document.</p>
+      <img src={require("../../static/about/en_slika2.png")}/>
+
+      <h2>3. Navigation between Corrections</h2>
+      <p>In the upper left corner, there are buttons to »undo« and »redo« every last action.</p>
+      <p>Below them, there are buttons that facilitate the navigation though the text. The buttons »previous« and »next« are used to navigate from one link to another (or back), while »prev mod« and »next mod« are used to navigate between modifications, i. e. the parts of the text that were corrected.</p>
+      
+      <h2>4. Manual Linking of Words and Units</h2>
+      <p>The automatic linking will not work when the words in the source and target boxes are too dissimilar or when the number of source and target words doesn't match.</p>
+      <p>When this happens, click the words you want to group and press the button »group«. The link will turn blue to highlight that it is a manual link.</p>
+      <p>Clicking a word will select it; clicking the link will select the words in that group. To select multiple words, hold the CTRL key or ⌘ while clicking. Deselect by clicking outside the graph.</p>
+      <p>If the words or units are connected incorrectly, click either the link or individual words and press the button »orphan«. This will break the link(s) and make the words available for new connections.</p>
+      <p>The button »auto« can be used to recreate the automatic linking of the words and units.</p>
+      
+      <img src={require("../../static/about/en_slika3.png")}/>
+
+      <h2>5. Other Features in the »show options« Dropdown Menu</h2>
+      <p>In the »show options« dropdown menu, it is also possible to »import« and »export« json files, »show graph« in the json format and »show diff« with all the differences that were made while correcting the text. The options »fit graph« and »show full graph« are used with longer sentences where visualisation is less clear. Finally, you can adjust the visualisation of the spaghetti link, i.e. it is possible to »hide/show source in graph« and »hide/show target in graph«.</p>
+    </div>
+    )
+  }
+
   function main() {
     const hovering = Model.isHovering(store)
     const visible_graph = Model.visibleGraph(store)
@@ -468,8 +574,9 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
     const label_expanded = (mode: string, label: string) =>
       taxonomy_is_expanded(mode, label)
 
-    return (
+    return state.about ? about() :(
       <div className="content">
+        
         {ShowErrors(store.at('errors'))}
         {manual_part()}
         {sv_part()}
@@ -616,7 +723,12 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
         <div className={'red-header'}>
           <a href={"/"} className={'logo'}><img src={require("../../static/logo.svg")}/></a>
           <div className={'red-header-menu-items'}>
-            <a href="">{i18n.t('redHeader.about')}</a>
+            {
+              Button(
+                i18n.t('redHeader.about'),
+                i18n.t('redHeader.about'),
+                () => Model.setAbout(store, true)
+              )}
             {
               Button(
                 i18n.t('headerButtons.opposite_language'),
@@ -725,12 +837,6 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               <hr />
               {toggle_button('graph')}
               {toggle_button('diff')}
-              <hr />
-              {Button(
-                state.manual === undefined ? i18n.t('options.manual') : i18n.t('options.exit_manual'),
-                'toggle showing manual',
-                () => Model.setManualTo(store, state.manual ? undefined : 'manual')
-              )}
             </div>
           </div>
         )}
@@ -836,7 +942,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
         <div className="footer-column-1">
           <h5>{i18n.t('footer.download')}</h5>
           <div className="to-bottom">
-            <p><a href="https://github.com/clarinsi/classla" target="_blank"><img src={require("../../static/clarin_logo.svg")} /></a></p>
+            <p><a href="https://github.com/clarinsi/swell-editor" target="_blank"><img src={require("../../static/clarin_logo.svg")} /></a></p>
           </div>
         </div>
         <div className="footer-column-2">

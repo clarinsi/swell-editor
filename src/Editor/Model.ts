@@ -47,6 +47,9 @@ export interface State {
   /** are we reading the user manual? */
   readonly manual?: string
 
+  /** are we reading about page? */
+  readonly about?: boolean
+
   /** Pseudonyms are remembered by label combination, e.g. "city 2" => "Zürich". */
   readonly pseudonyms: Pseudonyms
   /** Extra arguments for pseudonymization, which are not labels. */
@@ -418,6 +421,10 @@ export function flagValidationMessage(
 
 export function clearValidationMessages(store: Store<State>) {
   store.at('validation_messages').set([])
+}
+
+export function setAbout(store: Store<State>, about: boolean) {
+  store.update({about: about});
 }
 
 export function setManualTo(store: Store<State>, slug: string | undefined) {
