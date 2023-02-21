@@ -727,7 +727,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               Button(
                 i18n.t('redHeader.about'),
                 i18n.t('redHeader.about'),
-                () => Model.setAbout(store, true)
+                () => Model.setAbout(store, !state.about)
               )}
             {
               Button(

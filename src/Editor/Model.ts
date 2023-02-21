@@ -424,7 +424,11 @@ export function clearValidationMessages(store: Store<State>) {
 }
 
 export function setAbout(store: Store<State>, about: boolean) {
-  store.update({about: about});
+  if(about == false) {
+    store.at('about').set(undefined)
+  } else {
+    store.update({about: about});
+  }
 }
 
 export function setManualTo(store: Store<State>, slug: string | undefined) {
@@ -887,7 +891,7 @@ export function performAction(store: Store<State>, action: ActionOnSelected) {
 }
 
 const subkeys = <K extends string>(...ks: K[]): K[] => ks
-const location_keys = subkeys('manual', 'backurl', 'backend', 'essay', 'start_mode', 'user', 'svlink')
+const location_keys = subkeys('manual', 'backurl', 'backend', 'essay', 'start_mode', 'user', 'svlink','about')
 const base64_keys = subkeys('backurl', 'backend')
 const id = (s: string) => s
 
