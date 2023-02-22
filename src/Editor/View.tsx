@@ -599,7 +599,6 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
           </div>
         )}
         <br></br>
-        {Button(click_replace(store.at('automatic_rendering').get()), '', () => store.at('automatic_rendering').modify(b => !b))}
         <div
           className={'vsep' + (hovering ? ' hovering' : '') + (readonly ? ' NoManualBlue' : '')}
           style={{minHeight: '10em'}}>
