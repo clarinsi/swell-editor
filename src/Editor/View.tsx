@@ -484,11 +484,11 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       <h2>1. Transkripcija in popravljanje</h2>
       <p>Za besedilo sta na voljo dve okenci: »izvorno besedilo« in »popravljeno besedilo«. Prikaz okenc vklopimo s klikom na gumb »pokaži/skrij izvorno besedilo« »pokaži/skrij popravljeno besedilo« v spustnem seznamu »pokaži možnosti. Okencu za besedilo lahko spremenimo velikost s potegom iz spodnjega desnega kota.</p>
       <p>Z gumbom "kopiraj v popravljeno" lahko izvorno besedilo preprosto kopiramo v okence ciljnega besedila. V naslednjem koraku nato opravimo morebitne jezikovne popravke.</p>
-      <p>Spodaj je bilo učenčevo besedilo sva šle na pot popravljeno v sva šli na pot. Besedi šle in šli program avtomatsko poravna in poveže, ker sta si podobni. Vizualizacijo poravnav, ki jim pravimo tudi špageti, lahko vklopimo ali izklopimo z gumbom »pokaži povezave/skrij povezave«.</p>
+      <p>Spodaj je bilo učenčevo besedilo sva šle na pot popravljeno v sva šli na pot. Besedi šle in šli program avtomatsko poravna in poveže, ker sta si podobni.</p>
       <img src={require("../../static/about/sl_slika1.png")}/>
 
       <h2>2. Označevanje popravkov</h2>
-      <p>S klikom na katero koli povezavo oz. špaget se odpre razdelek na levi strani vmesnika. Ta je sestavljen iz navigacijskih gumbov na vrhu, iskalnega polja na sredini in hierarhično urejenega sistema oznak spodaj.</p>
+      <p>S klikom na katero koli povezavo v vizualizaciji poravnav, ki ji pravimo <i>špaget</i>, se odpre razdelek na levi strani vmesnika. Ta je sestavljen iz navigacijskih gumbov na vrhu, iskalnega polja na sredini in hierarhično urejenega sistema oznak spodaj.</p>
       <p>V spustnem seznamu »pokaži možnosti« je mogoče preklapljati med dvema različnima sistemoma oznak: za korpus Šolar (<a href="https://www.clarin.si/repository/xmlui/handle/11356/1589" target="_blank">Arhar Holdt idr. 2022b</a>) in za korpus KOST (<a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">Stritar Kučuk 2022</a>).</p>
       <p>Ko smo kliknili povezavo, lahko izberemo oznako popravka. Ime oznake lahko vpišemo v iskalno polje ali pa nanjo kliknemo v sistemu oznak. Napačne oznake lahko preprosto odstranimo tako, da izberemo povezavo in na tipkovnici pritisnemo vračalko (backspace).</p>
       <p>Vse dodeljene oznake so alinejsko prikazane tudi v desnem delu vmesnika, kar olajša pregled nad popravki v določenem dokumentu.</p>
@@ -531,33 +531,33 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
 
       <h1>User Manual</h1>
       <h2>1. Transcription and Error Correction</h2>
-      <p>There are two text boxes: »source text« box and »target text« box. The visibility of the boxes is toggled by clicking »show/hide source text« and »show/hide target text« in the »show options« dropdown menu. The text fields can be resized by dragging the lower right corner of the field.</p>
-      <p>By using the button »copy to target«, the source text is copied into the target text box - this is where adding corrections takes place.</p>
-      <p>On the picture below, you can see that the learner's text a example was corrected into an example. The word pairs a and an will automatically be aligned in the graph under the target box because the words are similar. The graph visualisation, also called »spaghettis«, can be toggled on or off by clicking the button »Spaghetti mode enable/disable«.</p>
+      <p>There are two text boxes: "source text" box and "target text" box. The visibility of the boxes is toggled by clicking "show/hide source text" and "show/hide target text" in the "show options" dropdown menu. The text fields can be resized by dragging the lower right corner of the field.</p>
+      <p>By using the button "copy to target", the source text is copied into the target text box - this is where adding corrections takes place.</p>
+      <p>On the picture below, you can see that the learner's text a example was corrected into an example. The word pairs a and an will automatically be aligned in the graph under the target box because the words are similar.</p>
       <img src={require("../../static/about/en_slika1.png")}/>
 
       <h2>2. Labelling of Corrections</h2>
-      <p>A click on any link in the spaghetti visualisation will open a section on the left side of the interface. It consists of navigation buttons on the top, a search box in the middle, and a hierarchically arranged system of labels below.</p>
-      <p>In the »show options« dropdown menu, it is possible to switch between two different annotation systems: for the Šolar corpus (<a href="https://www.clarin.si/repository/xmlui/handle/11356/1589" target="_blank">Arhar Holdt idr. 2022b</a>; in Slovene only) and for the KOST corpus (<a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">Stritar Kučuk 2022</a>; in Slovene only).</p>
+      <p>A click on any link in the graph visualisation, also called spaghetti, will open a section on the left side of the interface. It consists of navigation buttons on the top, a search box in the middle, and a hierarchically arranged system of labels below.</p>
+      <p>In the "show options" dropdown menu, it is possible to switch between two different annotation systems: for the Šolar corpus (<a href="https://www.clarin.si/repository/xmlui/handle/11356/1589" target="_blank">Arhar Holdt idr. 2022b</a>; in Slovene only) and for the KOST corpus (<a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">Stritar Kučuk 2022</a>; in Slovene only).</p>
       <p>When you have a link selected you can attach labels to it. You can either write the label name into the search box or click on it in the annotation system. You can easily remove wrong labels by selecting the link and pressing the backspace key on the keyboard.</p>
       <p>Note that all assigned labels appear concisely in the right part of the interface to ease the overview of corrections in the document.</p>
       <img src={require("../../static/about/en_slika2.png")}/>
 
       <h2>3. Navigation between Corrections</h2>
-      <p>In the upper left corner, there are buttons to »undo« and »redo« every last action.</p>
-      <p>Below them, there are buttons that facilitate the navigation though the text. The buttons »previous« and »next« are used to navigate from one link to another (or back), while »prev mod« and »next mod« are used to navigate between modifications, i. e. the parts of the text that were corrected.</p>
+      <p>In the upper left corner, there are buttons to "undo" and "redo" every last action.</p>
+      <p>Below them, there are buttons that facilitate the navigation though the text. The buttons "previous" and "next" are used to navigate from one link to another (or back), while "prev mod" and "next mod" are used to navigate between modifications, i. e. the parts of the text that were corrected.</p>
       
       <h2>4. Manual Linking of Words and Units</h2>
       <p>The automatic linking will not work when the words in the source and target boxes are too dissimilar or when the number of source and target words doesn't match.</p>
-      <p>When this happens, click the words you want to group and press the button »group«. The link will turn blue to highlight that it is a manual link.</p>
+      <p>When this happens, click the words you want to group and press the button "group". The link will turn blue to highlight that it is a manual link.</p>
       <p>Clicking a word will select it; clicking the link will select the words in that group. To select multiple words, hold the CTRL key or ⌘ while clicking. Deselect by clicking outside the graph.</p>
-      <p>If the words or units are connected incorrectly, click either the link or individual words and press the button »orphan«. This will break the link(s) and make the words available for new connections.</p>
-      <p>The button »auto« can be used to recreate the automatic linking of the words and units.</p>
+      <p>If the words or units are connected incorrectly, click either the link or individual words and press the button "orphan". This will break the link(s) and make the words available for new connections.</p>
+      <p>The button "auto" can be used to recreate the automatic linking of the words and units.</p>
       
       <img src={require("../../static/about/en_slika3.png")}/>
 
-      <h2>5. Other Features in the »show options« Dropdown Menu</h2>
-      <p>In the »show options« dropdown menu, it is also possible to »import« and »export« json files, »show graph« in the json format and »show diff« with all the differences that were made while correcting the text. The options »fit graph« and »show full graph« are used with longer sentences where visualisation is less clear. Finally, you can adjust the visualisation of the spaghetti link, i.e. it is possible to »hide/show source in graph« and »hide/show target in graph«.</p>
+      <h2>5. Other Features in the "show options" Dropdown Menu</h2>
+      <p>In the "show options" dropdown menu, it is also possible to "import" and "export" json files, "show graph" in the json format and "show diff" with all the differences that were made while correcting the text. The options "fit graph" and "show full graph" are used with longer sentences where visualisation is less clear. Finally, you can adjust the visualisation of the spaghetti link, i.e. it is possible to "hide/show source in graph" and "hide/show target in graph".</p>
     </div>
     )
   }
