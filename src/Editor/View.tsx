@@ -464,13 +464,13 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
     <div className="about">
       <h1>CJVT Svala in izvorna Svala</h1>
       <p>Orodje CJVT Svala je nastalo kot lokalizirana in adaptirana različica <a href="https://github.com/spraakbanken/swell-editor" target="_blank">odprto dostopnega orodja Svala</a>. Največja prednost orodja je, da združuje več korakov delotoka izgradnje korpusa usvajanja jezika, in sicer psevdomizacijo, normalizacijo in označevanje jezikovnih popravkov v besedilih. Poleg tega portal SweLL, v katerega je orodje Svala vključeno, skrbi še za vodenje delotokov za zbiranje in urejanje korpusnega gradiva (<a href="https://www.diva-portal.org/smash/get/diva2:1332091/FULLTEXT01.pdf" target='_blank'>Wirén 2019; Volodina et al. 2019</a>).</p>
-      <p>Orodje smo za slovenščino prilagodili v okviru projekta <a href="https://rsdo.slovenscina.eu/" target="_blank">Razvoj slovenščine v digitalnem okolju</a>, ki sta ga med letoma 2020 in 2023 sofinancirali Republika Slovenija in Evropska unija iz Evropskega sklada za regionalni razvoj. V luči trenutnih potreb smo v CJVT Svala prioritetno prenesli funkcionalnosti za transkripcijo, preprosto anonimizacijo in označevanje napak, dodatne module pa smo pustili za bodoči razvoj.</p>
+      <p>Orodje smo za slovenščino prilagodili v okviru projekta <a href="https://rsdo.slovenscina.eu/" target="_blank">Razvoj slovenščine v digitalnem okolju</a>, ki sta ga med letoma 2020 in 2023 sofinancirali Republika Slovenija in Evropska unija iz Evropskega sklada za regionalni razvoj. V luči trenutnih potreb smo v CJVT Svala prioritetno prenesli funkcionalnosti za transkripcijo, preprosto anonimizacijo in označevanje napak, dodatne module pa smo pustili za bodoči razvoj. V sodelovanju s Slovenskim raziskovalnim inštitutom SLORI iz Trsta smo orodje nadgradili na različico 1.1 in dodali označevalsko shemo za projekt STIKit ter možnost dodajanja komentarjev v besedilu.</p>
       <p>Več o adaptaciji Svale za slovenski prostor je mogoče prebrati v prispevku <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a>.</p>
       <p>Kot odprtokodno orodje je na voljo na repozitoriju GitHub: <a href="https://github.com/clarinsi/swell-editor" target="_blank">https://github.com/clarinsi/swell-editor</a>.</p>
-      <p>Citiranje orodja za raziskovalne namene: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan (2022): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.0, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, dostop.</p>
+      <p>Citiranje orodja za raziskovalne namene: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan, Luka Bezgovšek, Damjan Popič (2023): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.1, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, dostop.</p>
 
       <p>Zasnova portala: Špela Arhar Holdt, Iztok Kosem</p>
-      <p>Razvoj adaptiranega programa: Luka Krsnik, Leon Noe Jovan</p>
+      <p>Razvoj adaptiranega programa: Luka Krsnik, Leon Noe Jovan, Luka Bezgovšek</p>
       <p>Evalvacija portala: Mojca Stritar Kučuk</p>
 
       <h1>Reference</h1>
@@ -513,13 +513,13 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       <div className="about">
       <h1>From Svala to CJVT Svala</h1>
       <p>The CJVT Svala tool was born as a localized and customized version of the open-source <a href="https://github.com/spraakbanken/swell-editor" target="_blank">Svala tool</a>. developed by Swedish researchers to construct the Swedish learner corpus <a href="https://github.com/spraakbanken/swell-release-v1" target="_blank">SweLL</a>. The tool streamlines several crucial steps in the building process of both learner and development corpora, including pseudonymization, normalization, and annotation of linguistic corrections in texts. Moreover, it integrates with the SweLL portal, which manages the workflows for collecting and editing corpus material (<a href="https://www.diva-portal.org/smash/get/diva2:1332091/FULLTEXT01.pdf" target='_blank'>Wirén 2019; Volodina et al. 2019</a>).</p>
-      <p>The tool has been adapted for Slovene within the framework of the Development of Slovene in the Digital Environment (DSDE) project co-financed by the Republic of Slovenia and the European Union (the European Regional Development Fund) between 2020 and 2023. In light of current needs, we have adopted the transcription, simple anonymization and error annotation functionalities, while leaving more advanced modules, i.e. automated anonymization and annotation workflow management, for prospective development opportunities.</p>
+      <p>The tool has been adapted for Slovene within the framework of the Development of Slovene in the Digital Environment (DSDE) project co-financed by the Republic of Slovenia and the European Union (the European Regional Development Fund) between 2020 and 2023. In light of current needs, we have adopted the transcription, simple anonymization and error annotation functionalities, while leaving more advanced modules, i.e. automated anonymization and annotation workflow management, for prospective development opportunities. In cooperation with The Slovene Research Institute (SLORI) from Trieste, we upgraded the tool to version 1.1, which contains a new annotation scheme for the STIKit project and supports transcribing comments from texts.</p>
       <p>More on the adaptation of Svala for Slovenian can be found in <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a> (in Slovene only).</p>
       <p>It is available as an open-source tool on GitHub: <a href="https://github.com/clarinsi/swell-editor" target="_blank">https://github.com/clarinsi/swell-editor</a>.</p>
-      <p>To cite the CJVT Svala tool: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan (2022): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.0, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, access.</p>
+      <p>To cite the CJVT Svala tool: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan, Luka Bezgovšek, Damjan Popič (2023): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.1, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, access.</p>
 
       <p>Concept of the portal: Špela Arhar Holdt, Iztok Kosem</p>
-      <p>Adaptation of the tool: Luka Krsnik, Leon Noe Jovan</p>
+      <p>Adaptation of the tool: Luka Krsnik, Leon Noe Jovan, Luka Bezgovšek</p>
       <p>Evaluation of the portal: Mojca Stritar Kučuk</p>
 
       <h1>Reference list</h1>
@@ -833,6 +833,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               {Model.visible_button(Model.modes.correctannot.toString()) ? mode_switcher(Model.modes.correctannot) : ''}
               {Model.visible_button(Model.modes.correctannot_slo.toString()) ? mode_switcher(Model.modes.correctannot_slo) : ''}
               {Model.visible_button(Model.modes.correctannot_kost.toString()) ? mode_switcher(Model.modes.correctannot_kost) : ''}
+              {Model.visible_button(Model.modes.correctannot_stikit.toString()) ? mode_switcher(Model.modes.correctannot_stikit) : ''}
               <hr />
               {toggle_button('graph')}
               {toggle_button('diff')}
@@ -1088,6 +1089,20 @@ function ShowComments(store: Store<Model.State>) {
           disabled={!Model.can_modify(store.get()).state}
         />
       </div>
+      {G.token_ids_to_edges(g, Object.keys(store.at('selected').get()))
+        .filter(edge => edge.labels.some(G.is_comment_label))
+        .map(edge => (
+          <div className="comment-pane box vsep" key={edge.id}>
+            <Translation>{(t) => <p>{t('summary.edge_comment')}</p>}</Translation>
+            <textarea
+              className={'keepfocus'}
+              onMouseDown={ev => ev.stopPropagation()}
+              onChange={ev => setEdgeComment(edge.id, ev.target.value)}
+              defaultValue={edge.comment}
+              disabled={!Model.can_modify(store.get()).state}
+            />
+          </div>
+        ))}
     </div>
   )
 }

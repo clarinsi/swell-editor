@@ -4,6 +4,7 @@
   },
   "summary": {
   	"document_comment": "Document comment:",
+  	"edge_comment": "Edge comment:",
   },
   "actionButtonNames": {
     "revert": "revert",
@@ -47,6 +48,7 @@
     "switch_to": "switch to",
     "correction_annotation_Solar": "Correction annotation Solar",
     "correction_annotation_Kost": "Correction annotation Kost",
+    "correction_annotation_Stikit": "Correction annotation STIKit",
     "import_graph": "import graph",
     "export_graph": "export graph",
     "graph": "graph",

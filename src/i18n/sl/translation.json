@@ -4,6 +4,7 @@
   },
   "summary": {
   	"document_comment": "Komentarji:",
+  	"edge_comment": "Robni komentarji:",
   },
   "actionButtonNames": {
     "revert": "povrni",
@@ -47,6 +48,7 @@
     "switch_to": "preklopi na",
     "correction_annotation_Solar": "Oznake sistema 'Šolar'",
     "correction_annotation_Kost": "Oznake sistema 'KOST'",
+    "correction_annotation_Stikit": "Oznake sistema 'STIKit'",
     "import_graph": "uvozi podatke",
     "export_graph": "izvozi podatke",
     "graph": "graf v formatu json",

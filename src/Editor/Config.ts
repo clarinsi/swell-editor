@@ -199,6 +199,7 @@ const anonymization: Taxonomy = [
   },
 ]
 
+//KOST
 export const correctannot_kost: Taxonomy = [
   {
     group: 'Zapis',
@@ -354,9 +355,9 @@ export const correctannot_kost: Taxonomy = [
         desc: ''
       },
     ],
-  },
+  }
 ]
-
+//ŠOLAR
 export const correctannot_slo: Taxonomy = [
   {
     group: 'Anonimizacija',
@@ -378,7 +379,7 @@ export const correctannot_slo: Taxonomy = [
     entries: [],
   },
   {
-    group: 'Nečitljivo in sumljivo',
+    group: 'Druge oznake',
     is_expanded: false,
     subgroups: [],
     entries: [
@@ -390,6 +391,11 @@ export const correctannot_slo: Taxonomy = [
       {
         label: 'Preveri',
         key: 'N//preveri',
+        desc: ''
+      },
+      {
+        label: 'Komentar',
+        key: 'Komentar!',
         desc: ''
       },
     ],
@@ -1490,6 +1496,23 @@ export const correctannot_slo: Taxonomy = [
             key: 'Z/LOČ/vzorec-vejica-pridevniški-niz',
             desc: ''
           },
+
+          {
+            label: 'Vejica in kopičenje ločil',
+            key: 'Z/LOČ/vzorec-vejica-kopičenje-ločil',
+            desc: ''
+          },
+          {
+            label: 'Vejica in kopičenje veznikov',
+            key: 'Z/LOČ/vzorec-vejica-kopičenje-veznikov',
+            desc: ''
+          },
+          {
+            label: 'Vejica pri navajanju',
+            key: 'Z/LOČ/vzorec-vejica-navajanje',
+            desc: ''
+          },
+
           {
             label: 'Nerazvrščena ločila',
             key: 'Z/LOČ/nerazvrščeno',
@@ -1540,7 +1563,7 @@ export const correctannot_slo: Taxonomy = [
         entries: [
           {
             label: 'Mala in velika začetnica',
-            key: 'P/ZAP/mala_velika',
+            key: 'P/ZAP/mala-velika',
             desc: ''
           },
         ],
@@ -1790,6 +1813,481 @@ export const correctannot: Taxonomy = [
   },
 ]
 
+export const correctannot_stikit: Taxonomy = [
+  {
+    group: 'Zapis',
+    is_expanded: false,
+    subgroups: [
+      {
+        group: 'Ločila',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/LOČ/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'Z/LOČ/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'Z/LOČ/stik',
+            desc: ''
+          },
+          {
+            label: 'Drugo',
+            key: 'Z/LOČ/drugo',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Velika/mala začetnica',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/MV/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'Z/MV/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stiki',
+            key: 'Z/MV/stiki',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Skupaj/narazen',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/SN/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'Z/SN/stik',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Števila',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/ŠTEV/nerazvrščeno',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Krajšave',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/KR/nerazvrščeno',
+            desc: ''
+          },
+        ],
+      },
+    ],
+    entries: [],
+  },
+  {
+    group: 'Skladnja',
+    is_expanded: false,
+    subgroups: [
+      {
+        group: 'Odvečni jezikovni elementi',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'S/ODVEČ/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'S/ODVEČ/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'S/ODVEČ/stik',
+            desc: ''
+          },
+        ],
+      },
+    ],
+    entries: [
+      {
+        label: 'Izpuščeni jezikovni elementi',
+        key: 'S/izpust',
+        desc: ''
+      },
+      {
+        label: 'Besedni red',
+        key: 'S/BR',
+        desc: ''
+      },
+      {
+        label: 'Struktura',
+        key: 'S/STR',
+        desc: ''
+      },
+      {
+        label: 'Dodatne oznake',
+        key: 'S/DOD',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Besedišče',
+    is_expanded: false,
+    subgroups: [
+      {
+        group: 'Menjava prek meja besedne vrste',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/MEN/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/MEN/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/MEN/stik',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Glagol',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/GLAG/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/GLAG/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/GLAG/stik',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Samostalnik',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/SAM/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/SAM/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/SAM/stik',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Zaimek',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/ZAIM/nerzavrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/ZAIM/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/ZAIM/stik',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Predlog',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/PRED/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/PRED/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/PRED/stik',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Veznik',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/VEZ/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/VEZ/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/VEZ/stik',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Dodatne oznake',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Zaznamovano besedišče ',
+            key: 'B/DOD/zaznamovano',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Pridevnik',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Različne težave pridevnikov',
+            key: 'B/PRID/drugo',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Prislov',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Različne težave prislovov',
+            key: 'B/PRISL/drugo',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Ostale besedne vrste',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Različne težave ostalih bes. vrst',
+            key: 'B/OST/drugo',
+            desc: ''
+          },
+        ],
+      },
+    ],
+    entries: [],
+  },
+  {
+    group: 'Oblika',
+    is_expanded: false,
+    subgroups: [
+      {
+        group: 'Kategorialni popravki',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'O/KAT/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'O/KAT/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'O/KAT/stik',
+            desc: ''
+          },
+        ],
+      },
+    ],
+    entries: [
+      {
+        label: 'Paradigmatski popravki',
+        key: 'O/PAR',
+        desc: ''
+      },
+      {
+        label: 'Dodatne oznake',
+        key: 'O/DOD',
+        desc: ''
+      }
+    ],
+  },
+  {
+    group: 'Črkovanje',
+    is_expanded: false,
+    subgroups: [
+      {
+        group: 'Konzonanti',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Konzonant',
+            key: 'Č/KONZ',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Vokali',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Vokal',
+            key: 'Č/VOK',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Črkovni sklopi',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Črkovni sklop',
+            key: 'Č/SKLOP',
+            desc: ''
+          },
+        ],
+      },
+    ],
+    entries: [
+      {
+        label: 'Ustnično-ustnični w',
+        key: 'Č/W',
+        desc: ''
+      },
+      {
+        label: 'Variantni predlogi',
+        key: 'Č/PRED',
+        desc: ''
+      }
+    ],
+  },
+  {
+    group: 'Povezani popravki',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Zapis',
+        key: 'P/ZAP',
+        desc: ''
+      },
+      {
+        label: 'Oblika',
+        key: 'P/OBL',
+        desc: ''
+      },
+      {
+        label: 'Skladnja',
+        key: 'P/SKLA',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Nečitljivo in sumljivo',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Nečitljivo',
+        key: 'N//nečitljivo',
+        desc: ''
+      },
+      {
+        label: 'Preveri',
+        key: 'N//preveri',
+        desc: ''
+      },
+      {
+        label: 'Komentar!',
+        key: 'Komentar!',
+        desc: 'Comment'
+      }
+    ],
+  },
+]
+
 function doc_url(title: string): string {
   return 'https://spraakbanken.github.io/swell-project/' + title
 }
@@ -1807,6 +2305,9 @@ const docs: Record<string, Record<string, string>> = {
   correctannot_kost: {
     'annotation guidelines': doc_url('Correction-annotation_guidelines'),
   },
+  correctannot_stikit: {
+    'annotation guidelines': doc_url('Correction-annotation_guidelines'),
+  },
   correctannot: {
     'annotation guidelines': doc_url('Correction-annotation_guidelines'),
   },
@@ -1817,7 +2318,7 @@ export const config = {
   examples,
   image_ws_url,
   pseuws_url,
-  taxonomy: {anonymization, normalization, correctannot, correctannot_slo, correctannot_kost},
+  taxonomy: {anonymization, normalization, correctannot, correctannot_slo, correctannot_kost, correctannot_stikit},
   docs,
 }
 
@@ -1880,4 +2381,4 @@ export function taxonomy_is_expanded(taxonomy: string, label: string): boolean {
 }
 
 // export const visible_modes = ['anonymization', 'normalization', 'correctannot', 'validate']
-export const visible_modes = ['correctannot_slo', 'correctannot_kost',]
+export const visible_modes = ['correctannot_slo', 'correctannot_kost', 'correctannot_stikit']
