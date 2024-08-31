@@ -33,8 +33,35 @@ import { none } from 'ramda'
 import "@fontsource/ibm-plex-sans";
 
 typestyle.cssRaw(`
+html {
+  scrollbar-gutter: stable;
+}
 body > div {
   height: 100%
+}
+.taxonomy ul { 
+  padding-left; .5rem!important; 
+}
+.taxonomy li b span { 
+  text-indent: -1rem!important; padding-left: 1rem!important; 
+}
+.entry { 
+  display: block; 
+}
+.taxonomy > li > ul {
+  padding-left: 1rem!important;
+}
+.taxonomy > li > ul >li > ul {
+  padding-left: 1.5rem!important;
+}
+.taxonomy > li { 
+  padding-bottom: .25rem!important;
+  padding-top: .15rem!important;
+  border-bottom: 1px solid #d6d6d6;
+}
+.taxonomy li:not(:has(> b)):hover { 
+  background-color: #c2e0ff; 
+  border-radius: 5px;
 }
 `)
 
@@ -464,8 +491,8 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
     <div className="about">
       <h1>CJVT Svala in izvorna Svala</h1>
       <p>Orodje CJVT Svala je nastalo kot lokalizirana in adaptirana različica <a href="https://github.com/spraakbanken/swell-editor" target="_blank">odprto dostopnega orodja Svala</a>. Največja prednost orodja je, da združuje več korakov delotoka izgradnje korpusa usvajanja jezika, in sicer psevdomizacijo, normalizacijo in označevanje jezikovnih popravkov v besedilih. Poleg tega portal SweLL, v katerega je orodje Svala vključeno, skrbi še za vodenje delotokov za zbiranje in urejanje korpusnega gradiva (<a href="https://www.diva-portal.org/smash/get/diva2:1332091/FULLTEXT01.pdf" target='_blank'>Wirén 2019; Volodina et al. 2019</a>).</p>
-      <p>Orodje smo za slovenščino prilagodili v okviru projekta <a href="https://rsdo.slovenscina.eu/" target="_blank">Razvoj slovenščine v digitalnem okolju</a>, ki sta ga med letoma 2020 in 2023 sofinancirali Republika Slovenija in Evropska unija iz Evropskega sklada za regionalni razvoj. V luči trenutnih potreb smo v CJVT Svala prioritetno prenesli funkcionalnosti za transkripcijo, preprosto anonimizacijo in označevanje napak, dodatne module pa smo pustili za bodoči razvoj. V sodelovanju s Slovenskim raziskovalnim inštitutom SLORI iz Trsta smo orodje nadgradili na različico 1.1 in dodali označevalsko shemo za projekt STIKit ter možnost dodajanja komentarjev v besedilu.</p>
-      <p>Več o adaptaciji Svale za slovenski prostor je mogoče prebrati v prispevku <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a>.</p>
+      <p>Orodje smo za slovenščino prilagodili v okviru projekta <a href="https://rsdo.slovenscina.eu/" target="_blank">Razvoj slovenščine v digitalnem okolju</a>, ki sta ga med letoma 2020 in 2023 sofinancirali Republika Slovenija in Evropska unija iz Evropskega sklada za regionalni razvoj. V luči trenutnih potreb smo v CJVT Svala prioritetno prenesli funkcionalnosti za transkripcijo, preprosto anonimizacijo in označevanje napak, dodatne module pa smo pustili za bodoči razvoj. V sodelovanju s Slovenskim raziskovalnim inštitutom SLORI iz Trsta smo orodje nadgradili na različico 1.1 in dodali označevalsko shemo za projekt STIKit ter možnost dodajanja komentarjev v besedilu. Nadgradja je potekala pod okriljem projekta <a href='https://www.cjvt.si/prop/' target='_blank'>Empirična podlaga za digitalno podprt razvoj pisne jezikovne zmožnosti <small>(J7-3159)</small></a>, ki ga je med leti 2021 in 2024 financirala agencija ARIS iz državnega proračuna.</p>
+      <p>Več o adaptaciji Svale za slovenski prostor je mogoče prebrati v prispevkih <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a> in <a href='https://aclanthology.org/2024.lrec-main.1424.pdf' target='_blank'>Arhar Holdt idr. 2024</a>.</p>
       <p>Kot odprtokodno orodje je na voljo na repozitoriju GitHub: <a href="https://github.com/clarinsi/swell-editor" target="_blank">https://github.com/clarinsi/swell-editor</a>.</p>
       <p>Citiranje orodja za raziskovalne namene: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan, Luka Bezgovšek, Damjan Popič (2023): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.1, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, dostop.</p>
 
@@ -476,6 +503,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       <h1>Reference</h1>
       <p>ARHAR HOLDT, Špela, KOSEM, Iztok, STRITAR KUČUK, Mojca. Metode in orodja za lažjo pripravo korpusov usvajanja jezika. V: PIRIH SVETINA, Nataša (ur.), FERBEŽAR, Ina (ur.). <i>Na stičišču svetov : slovenščina kot drugi in tuji jezik</i>. 1. natis. Ljubljana: Založba Univerze, 2022a. Str. 23-30, ilustr. Zbirka Obdobja, 41. <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf</a>.</p>
       <p>ARHAR HOLDT, Špela, LAVRIČ, Polona, ROBLEK, Rebeka, GOLI Teja, 2022b. Kategorizacija učiteljskih popravkov: Smernice za označevanje korpusa Šolar, v1.1. <a href="http://hdl.handle.net/11356/1589" target="_blank">http://hdl.handle.net/11356/1589</a>.</p>
+      <p><small>ARHAR HOLDT, Špela, ERJAVEC, Tomaž, KOSEM, Iztok, VOLODINA, Elena. Towards an ideal tool for learner error annotation. V: CALZOLARI, Nicoletta (ur.). <i>The 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024): main conference proceedings: 20-25 May, 2024, Torino, Italia.</i> [Paris]: ELRA Language Resources Association (ELRA); [Stroudsburg]: International Committee on Computational Linguistics, cop. 2024. Str. 16392-16398. <a href='https://aclanthology.org/2024.lrec-main.1424.pdf' target='_blank'>https://aclanthology.org/2024.lrec-main.1424.pdf</a>.</small></p>
       <p>STRITAR KUČUK, Mojca, 2022: KOST, Korpus slovenščine kot tujega jezika: Priročnik za označevanje napak, delovna verzija. <a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf</a>. </p>
       <p>VOLODINA, Elena, GRANSTEDT, Lena, MATSSON, Arild, MEGYESI, Beáta, PILÁN, Ildikó, PRENTICE, Julia, ROSÉN, Dan, RUDEBECK, Lisa, SCHENSTRÖM, Carl-Johan, SUNDBERG, Gunlög, WIRÉN, Mats, 2019: The SweLL Language Learner Corpus: From Design to Annotation. Northern European Journal of Language Technology 6. 67–104.</p>
       <p>WIRÉN, Mats, MATSSON, Arild, ROSÉN, Dan, VOLODINA, Elena, 2019: SVALA: Annotation of Second-Language Learner Text Based on Mostly Automatic Alignment of Parallel Corpora. Inguna Skadina, Maria Eskevich (ur.): Selected papers from the CLARIN Annual Conference 2018, Pisa, 8–10 October 2018. Linköping: Linköping University Electronic Press. 227–239.</p>
@@ -513,8 +541,8 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       <div className="about">
       <h1>From Svala to CJVT Svala</h1>
       <p>The CJVT Svala tool was born as a localized and customized version of the open-source <a href="https://github.com/spraakbanken/swell-editor" target="_blank">Svala tool</a>. developed by Swedish researchers to construct the Swedish learner corpus <a href="https://github.com/spraakbanken/swell-release-v1" target="_blank">SweLL</a>. The tool streamlines several crucial steps in the building process of both learner and development corpora, including pseudonymization, normalization, and annotation of linguistic corrections in texts. Moreover, it integrates with the SweLL portal, which manages the workflows for collecting and editing corpus material (<a href="https://www.diva-portal.org/smash/get/diva2:1332091/FULLTEXT01.pdf" target='_blank'>Wirén 2019; Volodina et al. 2019</a>).</p>
-      <p>The tool has been adapted for Slovene within the framework of the Development of Slovene in the Digital Environment (DSDE) project co-financed by the Republic of Slovenia and the European Union (the European Regional Development Fund) between 2020 and 2023. In light of current needs, we have adopted the transcription, simple anonymization and error annotation functionalities, while leaving more advanced modules, i.e. automated anonymization and annotation workflow management, for prospective development opportunities. In cooperation with The Slovene Research Institute (SLORI) from Trieste, we upgraded the tool to version 1.1, which contains a new annotation scheme for the STIKit project and supports transcribing comments from texts.</p>
-      <p>More on the adaptation of Svala for Slovenian can be found in <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a> (in Slovene only).</p>
+      <p>The tool has been adapted for Slovene within the framework of the Development of Slovene in the Digital Environment (DSDE) project co-financed by the Republic of Slovenia and the European Union (the European Regional Development Fund) between 2020 and 2023. In light of current needs, we have adopted the transcription, simple anonymization and error annotation functionalities, while leaving more advanced modules, i.e. automated anonymization and annotation workflow management, for prospective development opportunities. In cooperation with The Slovene Research Institute (SLORI) from Trieste, we upgraded the tool to version 1.1, which contains a new annotation scheme for the STIKit project and supports transcribing comments from texts. The upgrade was conducted under the umbrella of the research project <a href='https://www.cjvt.si/prop/en/' target='_blank'>Empirical foundations for digitally-supported development of writing skills</a> (J7-3159) founded by the ARIS agency between 2021 and 2024.</p>
+      <p>More on the adaptation of Svala for Slovenian can be found in <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">Arhar Holdt idr. 2022a</a> and <a href='https://aclanthology.org/2024.lrec-main.1424.pdf' target='_blank'>Arhar Holdt idr. 2024</a>.</p>
       <p>It is available as an open-source tool on GitHub: <a href="https://github.com/clarinsi/swell-editor" target="_blank">https://github.com/clarinsi/swell-editor</a>.</p>
       <p>To cite the CJVT Svala tool: Špela Arhar Holdt, Iztok Kosem, Mojca Stritar Kučuk, Luka Krsnik, Leon Noe Jovan, Luka Bezgovšek, Damjan Popič (2023): CJVT Svala (Kazalnik projekta Razvoj slovenščine v digitalnem okolju), v1.1, <a href="https://orodja.cjvt.si/svala/" target="_blank">https://orodja.cjvt.si/svala/</a>, access.</p>
 
@@ -525,6 +553,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
       <h1>Reference list</h1>
       <p>ARHAR HOLDT, Špela, KOSEM, Iztok, STRITAR KUČUK, Mojca. Metode in orodja za lažjo pripravo korpusov usvajanja jezika. V: PIRIH SVETINA, Nataša (ur.), FERBEŽAR, Ina (ur.). <i>Na stičišču svetov : slovenščina kot drugi in tuji jezik</i>. 1. natis. Ljubljana: Založba Univerze, 2022a. Str. 23-30, ilustr. Zbirka Obdobja, 41. <a href="https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf" target="_blank">https://centerslo.si/wp-content/uploads/2022/11/Arhar-Holdt-et-al_Obdobja-41.pdf</a>.</p>
       <p>ARHAR HOLDT, Špela, LAVRIČ, Polona, ROBLEK, Rebeka, GOLI Teja, 2022b. Kategorizacija učiteljskih popravkov: Smernice za označevanje korpusa Šolar, v1.1. <a href="http://hdl.handle.net/11356/1589" target="_blank">http://hdl.handle.net/11356/1589</a>.</p>
+      <p><small>ARHAR HOLDT, Špela, ERJAVEC, Tomaž, KOSEM, Iztok, VOLODINA, Elena. Towards an ideal tool for learner error annotation. V: CALZOLARI, Nicoletta (ur.). <i>The 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024): main conference proceedings: 20-25 May, 2024, Torino, Italia.</i> [Paris]: ELRA Language Resources Association (ELRA); [Stroudsburg]: International Committee on Computational Linguistics, cop. 2024. Str. 16392-16398. <a href='https://aclanthology.org/2024.lrec-main.1424.pdf' target='_blank'>https://aclanthology.org/2024.lrec-main.1424.pdf</a>.</small></p>
       <p>STRITAR KUČUK, Mojca, 2022: KOST, Korpus slovenščine kot tujega jezika: Priročnik za označevanje napak, delovna verzija. <a href="https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf" target="_blank">https://www.cjvt.si/korpus-kost/wp-content/uploads/sites/24/2022/04/Prirocnik-za-oznacevanje-napak-v-KOST-u-2022-04-13.pdf</a>. </p>
       <p>VOLODINA, Elena, GRANSTEDT, Lena, MATSSON, Arild, MEGYESI, Beáta, PILÁN, Ildikó, PRENTICE, Julia, ROSÉN, Dan, RUDEBECK, Lisa, SCHENSTRÖM, Carl-Johan, SUNDBERG, Gunlög, WIRÉN, Mats, 2019: The SweLL Language Learner Corpus: From Design to Annotation. Northern European Journal of Language Technology 6. 67–104.</p>
       <p>WIRÉN, Mats, MATSSON, Arild, ROSÉN, Dan, VOLODINA, Elena, 2019: SVALA: Annotation of Second-Language Learner Text Based on Mostly Automatic Alignment of Parallel Corpora. Inguna Skadina, Maria Eskevich (ur.): Selected papers from the CLARIN Annual Conference 2018, Pisa, 8–10 October 2018. Linköping: Linköping University Electronic Press. 227–239.</p>

@@ -1813,7 +1813,355 @@ export const correctannot: Taxonomy = [
   },
 ]
 
+//verzija 1.2
 export const correctannot_stikit: Taxonomy = [
+  {
+    group: 'Besedišče',
+    is_expanded: false,
+    subgroups: [
+      {
+        group: 'Glagol',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/GLAG/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/GLAG/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/GLAG/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'B/GLAG/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Menjava prek meja besedne vrste',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/MEN/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/MEN/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/MEN/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'B/MEN/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Pridevnik',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/PRID/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/PRID/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/PRID/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'B/PRID/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Prislov',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/PRISL/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/PRISL/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/PRISL/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'B/PRISL/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Samostalnik',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/SAM/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/SAM/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/SAM/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'B/SAM/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Dodatne oznake',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Zaznamovano besedišče ',
+            key: 'B/DOD/zaznamovano',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Ostale besedne vrste',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Različne težave ostalih bes. vrst',
+            key: 'B/OST/drugo',
+            desc: ''
+          },
+        ],
+      },
+    ],
+    entries: [],
+  },
+  {
+    group: 'Skladnja',
+    is_expanded: false,
+    subgroups: [
+      {
+        group: 'Besedni red',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'S/BRED/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'S/BRED/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'S/BRED/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'S/BRED/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Manjkajoči jezikovni elementi',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'S/MANJKA/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'S/MANJKA/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'S/MANJKA/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'S/MANJKA/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Odvečni jezikovni elementi',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'S/ODVEČ/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'S/ODVEČ/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'S/ODVEČ/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'S/ODVEČ/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Predlog',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'S/PRED/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'S/PRED/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'S/PRED/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'S/PRED/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Veznik',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'S/VEZ/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'S/VEZ/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'S/VEZ/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'S/VEZ/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Zaimek',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'S/ZAIM/nerzavrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'S/ZAIM/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'S/ZAIM/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'S/ZAIM/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Menjava stavčnega člena',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Menjava stavčnega člena',
+            key: 'S/MSČ',
+            desc: ''
+          },
+        ],
+      },
+    ],
+    entries: [],
+  },
   {
     group: 'Zapis',
     is_expanded: false,
@@ -1839,8 +2187,35 @@ export const correctannot_stikit: Taxonomy = [
             desc: ''
           },
           {
-            label: 'Drugo',
-            key: 'Z/LOČ/drugo',
+            label: 'Slog',
+            key: 'Z/LOČ/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Skupaj/narazen',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/SN/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'Z/SN/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'Z/SN/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'Z/SN/slog',
             desc: ''
           },
         ],
@@ -1865,33 +2240,9 @@ export const correctannot_stikit: Taxonomy = [
             key: 'Z/MV/stiki',
             desc: ''
           },
-        ],
-      },
-      {
-        group: 'Skupaj/narazen',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
           {
-            label: 'Nerazvrščeno',
-            key: 'Z/SN/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'Z/SN/stik',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Števila',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'Z/ŠTEV/nerazvrščeno',
+            label: 'Slog',
+            key: 'Z/MV/slog',
             desc: ''
           },
         ],
@@ -1908,338 +2259,73 @@ export const correctannot_stikit: Taxonomy = [
           },
         ],
       },
-    ],
-    entries: [],
-  },
-  {
-    group: 'Skladnja',
-    is_expanded: false,
-    subgroups: [
       {
-        group: 'Odvečni jezikovni elementi',
+        group: 'Števila',
         is_expanded: false,
         subgroups: [],
         entries: [
           {
             label: 'Nerazvrščeno',
-            key: 'S/ODVEČ/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'S/ODVEČ/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'S/ODVEČ/stik',
-            desc: ''
-          },
-        ],
-      },
-    ],
-    entries: [
-      {
-        label: 'Izpuščeni jezikovni elementi',
-        key: 'S/izpust',
-        desc: ''
-      },
-      {
-        label: 'Besedni red',
-        key: 'S/BR',
-        desc: ''
-      },
-      {
-        label: 'Struktura',
-        key: 'S/STR',
-        desc: ''
-      },
-      {
-        label: 'Dodatne oznake',
-        key: 'S/DOD',
-        desc: ''
-      },
-    ],
-  },
-  {
-    group: 'Besedišče',
-    is_expanded: false,
-    subgroups: [
-      {
-        group: 'Menjava prek meja besedne vrste',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'B/MEN/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'B/MEN/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'B/MEN/stik',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Glagol',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'B/GLAG/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'B/GLAG/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'B/GLAG/stik',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Samostalnik',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'B/SAM/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'B/SAM/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'B/SAM/stik',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Zaimek',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'B/ZAIM/nerzavrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'B/ZAIM/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'B/ZAIM/stik',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Predlog',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'B/PRED/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'B/PRED/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'B/PRED/stik',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Veznik',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'B/VEZ/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'B/VEZ/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'B/VEZ/stik',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Dodatne oznake',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Zaznamovano besedišče ',
-            key: 'B/DOD/zaznamovano',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Pridevnik',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Različne težave pridevnikov',
-            key: 'B/PRID/drugo',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Prislov',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Različne težave prislovov',
-            key: 'B/PRISL/drugo',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Ostale besedne vrste',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Različne težave ostalih bes. vrst',
-            key: 'B/OST/drugo',
+            key: 'Z/ŠTEV/nerazvrščeno',
             desc: ''
           },
         ],
       },
     ],
     entries: [],
-  },
-  {
-    group: 'Oblika',
-    is_expanded: false,
-    subgroups: [
-      {
-        group: 'Kategorialni popravki',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'O/KAT/nerazvrščeno',
-            desc: ''
-          },
-          {
-            label: 'Splošno',
-            key: 'O/KAT/splošno',
-            desc: ''
-          },
-          {
-            label: 'Stik',
-            key: 'O/KAT/stik',
-            desc: ''
-          },
-        ],
-      },
-    ],
-    entries: [
-      {
-        label: 'Paradigmatski popravki',
-        key: 'O/PAR',
-        desc: ''
-      },
-      {
-        label: 'Dodatne oznake',
-        key: 'O/DOD',
-        desc: ''
-      }
-    ],
   },
   {
     group: 'Črkovanje',
     is_expanded: false,
-    subgroups: [
-      {
-        group: 'Konzonanti',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Konzonant',
-            key: 'Č/KONZ',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Vokali',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Vokal',
-            key: 'Č/VOK',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Črkovni sklopi',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Črkovni sklop',
-            key: 'Č/SKLOP',
-            desc: ''
-          },
-        ],
-      },
-    ],
+    subgroups: [],
     entries: [
       {
-        label: 'Ustnično-ustnični w',
-        key: 'Č/W',
+        label: 'Konzonant',
+        key: 'Č/KONZ',
         desc: ''
       },
       {
-        label: 'Variantni predlogi',
-        key: 'Č/PRED',
+        label: 'Vokal',
+        key: 'Č/VOK',
         desc: ''
-      }
+      },
+      {
+        label: 'Črkovni sklop',
+        key: 'Č/SKLOP',
+        desc: ''
+      },
+      {
+        label: 'Zatipkano',
+        key: 'Č/ZATIP',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Oblika',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Nerazvrščeno',
+        key: 'O/KAT/nerazvrščeno',
+        desc: ''
+      },
+      {
+        label: 'Splošno',
+        key: 'O/KAT/splošno',
+        desc: ''
+      },
+      {
+        label: 'Stik',
+        key: 'O/KAT/stik',
+        desc: ''
+      },
+      {
+        label: 'Slog',
+        key: 'O/KAT/slog',
+        desc: ''
+      },
     ],
   },
   {
@@ -2262,28 +2348,6 @@ export const correctannot_stikit: Taxonomy = [
         key: 'P/SKLA',
         desc: ''
       },
-    ],
-  },
-  {
-    group: 'Nečitljivo in sumljivo',
-    is_expanded: false,
-    subgroups: [],
-    entries: [
-      {
-        label: 'Nečitljivo',
-        key: 'N//nečitljivo',
-        desc: ''
-      },
-      {
-        label: 'Preveri',
-        key: 'N//preveri',
-        desc: ''
-      },
-      {
-        label: 'Komentar!',
-        key: 'Komentar!',
-        desc: 'Comment'
-      }
     ],
   },
 ]
