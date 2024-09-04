@@ -1813,7 +1813,7 @@ export const correctannot: Taxonomy = [
   },
 ]
 
-//verzija 1.2
+//verzija 1.3
 export const correctannot_stikit: Taxonomy = [
   {
     group: 'Besedišče',
@@ -1869,6 +1869,33 @@ export const correctannot_stikit: Taxonomy = [
           {
             label: 'Slog',
             key: 'B/MEN/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Ostale besedne vrste',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/OST/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/OST/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/OST/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'B/OST/slog',
             desc: ''
           },
         ],
@@ -1954,32 +1981,94 @@ export const correctannot_stikit: Taxonomy = [
           },
         ],
       },
-      {
-        group: 'Dodatne oznake',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Zaznamovano besedišče ',
-            key: 'B/DOD/zaznamovano',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Ostale besedne vrste',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Različne težave ostalih bes. vrst',
-            key: 'B/OST/drugo',
-            desc: ''
-          },
-        ],
-      },
     ],
     entries: [],
+  },
+  {
+    group: 'Črkovanje',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Konzonant',
+        key: 'Č/KONZ',
+        desc: ''
+      },
+      {
+        label: 'Vokal',
+        key: 'Č/VOK',
+        desc: ''
+      },
+      {
+        label: 'Črkovni sklop',
+        key: 'Č/SKLOP',
+        desc: ''
+      },
+      {
+        label: 'Zatipkano',
+        key: 'Č/ZATIP',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Oblika',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Nerazvrščeno',
+        key: 'O/KAT/nerazvrščeno',
+        desc: ''
+      },
+      {
+        label: 'Splošno',
+        key: 'O/KAT/splošno',
+        desc: ''
+      },
+      {
+        label: 'Stik',
+        key: 'O/KAT/stik',
+        desc: ''
+      },
+      {
+        label: 'Slog',
+        key: 'O/KAT/slog',
+        desc: ''
+      },
+    ],
+  },
+  {
+    group: 'Povezani popravki',
+    is_expanded: false,
+    subgroups: [],
+    entries: [
+      {
+        label: 'Zapis',
+        key: 'P/ZAP',
+        desc: ''
+      },
+      {
+        label: 'Oblika',
+        key: 'P/OBL',
+        desc: ''
+      },
+      {
+        label: 'Skladnja',
+        key: 'P/SKLA',
+        desc: ''
+      },
+      {
+        label: 'Črkovanje',
+        key: 'P/ČRKV',
+        desc: ''
+      },
+      {
+        label: 'Besedišče',
+        key: 'P/BESD',
+        desc: ''
+      },
+    ],
   },
   {
     group: 'Skladnja',
@@ -2035,6 +2124,33 @@ export const correctannot_stikit: Taxonomy = [
           {
             label: 'Slog',
             key: 'S/MANJKA/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
+        group: 'Menjava stavčnega člena',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'B/MSČ/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'B/MSČ/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'B/MSČ/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'B/MSČ/slog',
             desc: ''
           },
         ],
@@ -2147,18 +2263,6 @@ export const correctannot_stikit: Taxonomy = [
           },
         ],
       },
-      {
-        group: 'Menjava stavčnega člena',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Menjava stavčnega člena',
-            key: 'S/MSČ',
-            desc: ''
-          },
-        ],
-      },
     ],
     entries: [],
   },
@@ -2166,6 +2270,33 @@ export const correctannot_stikit: Taxonomy = [
     group: 'Zapis',
     is_expanded: false,
     subgroups: [
+      {
+        group: 'Krajšave',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/KR/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'Z/KR/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'Z/KR/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'Z/KR/slog',
+            desc: ''
+          },
+        ],
+      },
       {
         group: 'Ločila',
         is_expanded: false,
@@ -2221,6 +2352,33 @@ export const correctannot_stikit: Taxonomy = [
         ],
       },
       {
+        group: 'Števila',
+        is_expanded: false,
+        subgroups: [],
+        entries: [
+          {
+            label: 'Nerazvrščeno',
+            key: 'Z/ŠTEV/nerazvrščeno',
+            desc: ''
+          },
+          {
+            label: 'Splošno',
+            key: 'Z/ŠTEV/splošno',
+            desc: ''
+          },
+          {
+            label: 'Stik',
+            key: 'Z/ŠTEV/stik',
+            desc: ''
+          },
+          {
+            label: 'Slog',
+            key: 'Z/ŠTEV/slog',
+            desc: ''
+          },
+        ],
+      },
+      {
         group: 'Velika/mala začetnica',
         is_expanded: false,
         subgroups: [],
@@ -2247,109 +2405,21 @@ export const correctannot_stikit: Taxonomy = [
           },
         ],
       },
-      {
-        group: 'Krajšave',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'Z/KR/nerazvrščeno',
-            desc: ''
-          },
-        ],
-      },
-      {
-        group: 'Števila',
-        is_expanded: false,
-        subgroups: [],
-        entries: [
-          {
-            label: 'Nerazvrščeno',
-            key: 'Z/ŠTEV/nerazvrščeno',
-            desc: ''
-          },
-        ],
-      },
     ],
     entries: [],
   },
   {
-    group: 'Črkovanje',
+    group: 'Komentar',
     is_expanded: false,
     subgroups: [],
     entries: [
       {
-        label: 'Konzonant',
-        key: 'Č/KONZ',
-        desc: ''
-      },
-      {
-        label: 'Vokal',
-        key: 'Č/VOK',
-        desc: ''
-      },
-      {
-        label: 'Črkovni sklop',
-        key: 'Č/SKLOP',
-        desc: ''
-      },
-      {
-        label: 'Zatipkano',
-        key: 'Č/ZATIP',
-        desc: ''
-      },
-    ],
-  },
-  {
-    group: 'Oblika',
-    is_expanded: false,
-    subgroups: [],
-    entries: [
-      {
-        label: 'Nerazvrščeno',
-        key: 'O/KAT/nerazvrščeno',
-        desc: ''
-      },
-      {
-        label: 'Splošno',
-        key: 'O/KAT/splošno',
-        desc: ''
-      },
-      {
-        label: 'Stik',
-        key: 'O/KAT/stik',
-        desc: ''
-      },
-      {
-        label: 'Slog',
-        key: 'O/KAT/slog',
-        desc: ''
-      },
-    ],
-  },
-  {
-    group: 'Povezani popravki',
-    is_expanded: false,
-    subgroups: [],
-    entries: [
-      {
-        label: 'Zapis',
-        key: 'P/ZAP',
-        desc: ''
-      },
-      {
-        label: 'Oblika',
-        key: 'P/OBL',
-        desc: ''
-      },
-      {
-        label: 'Skladnja',
-        key: 'P/SKLA',
-        desc: ''
-      },
-    ],
-  },
+        label: 'Komentar!',
+        key: 'Komentar!',
+        desc: 'Comment'
+      }
+    ]
+  }
 ]
 
 function doc_url(title: string): string {
