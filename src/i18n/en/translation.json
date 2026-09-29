@@ -49,6 +49,7 @@
     "correction_annotation_Solar": "Correction annotation Solar",
     "correction_annotation_Kost": "Correction annotation Kost",
     "correction_annotation_Stikit": "Correction annotation STIKit",
+    "correction_annotation_Robust": "Correction annotation Robust",
     "import_graph": "import graph",
     "export_graph": "export graph",
     "graph": "graph",

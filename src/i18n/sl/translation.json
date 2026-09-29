@@ -49,6 +49,7 @@
     "correction_annotation_Solar": "Oznake sistema 'Šolar'",
     "correction_annotation_Kost": "Oznake sistema 'KOST'",
     "correction_annotation_Stikit": "Oznake sistema 'STIKit'",
+    "correction_annotation_Robust": "Oznake sistema 'Robust'",
     "import_graph": "uvozi podatke",
     "export_graph": "izvozi podatke",
     "graph": "graf v formatu json",

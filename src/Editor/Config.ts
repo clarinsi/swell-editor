@@ -39,7 +39,7 @@ export const label_args: Record<string, number> = {
 }
 
 export type TaxonomyGroup = {
-  group: string
+  group: string | null
   is_expanded: boolean,
   subgroups: TaxonomyGroup[],
   entries: {
@@ -50,6 +50,11 @@ export type TaxonomyGroup = {
 }
 
 export type Taxonomy = TaxonomyGroup[]
+
+/** A group with group: null has no header: its entries are listed directly and never collapse. */
+export function headerless(g: TaxonomyGroup): boolean {
+  return g.group === null
+}
 
 const extra = 'gen def pl foreign'.split(' ')
 const temporary = 'OBS! Cit-FL Com!'.split(' ')
@@ -2422,6 +2427,48 @@ export const correctannot_stikit: Taxonomy = [
   }
 ]
 
+
+export const correctannot_robust: Taxonomy = [
+  {
+    entries: [
+      {
+        label: 'Črkovanje',
+        key: 'C',
+        desc: ''
+      },
+      {
+        label: 'Zapis',
+        key: 'Z',
+        desc: ''
+      },
+      {
+        label: 'Oblika',
+        key: 'O',
+        desc: ''
+      },
+      {
+        label: 'Besedišče',
+        key: 'B',
+        desc: ''
+      },
+      {
+        label: 'Skladnja',
+        key: 'S',
+        desc: ''
+      },
+      {
+        label: 'Drugo',
+        key: 'D',
+        desc: ''
+      }
+    ],
+    group: null,
+    is_expanded: true,
+    subgroups: []
+  }
+]
+    
+
 function doc_url(title: string): string {
   return 'https://spraakbanken.github.io/swell-project/' + title
 }
@@ -2442,6 +2489,9 @@ const docs: Record<string, Record<string, string>> = {
   correctannot_stikit: {
     'annotation guidelines': doc_url('Correction-annotation_guidelines'),
   },
+  correctannot_robust: {
+    'annotation guidelines': doc_url('Correction-annotation_guidelines'),
+  },
   correctannot: {
     'annotation guidelines': doc_url('Correction-annotation_guidelines'),
   },
@@ -2452,7 +2502,7 @@ export const config = {
   examples,
   image_ws_url,
   pseuws_url,
-  taxonomy: {anonymization, normalization, correctannot, correctannot_slo, correctannot_kost, correctannot_stikit},
+  taxonomy: {anonymization, normalization, correctannot, correctannot_slo, correctannot_kost, correctannot_stikit, correctannot_robust},
   docs,
 }
 
@@ -2470,7 +2520,7 @@ export function label_group(label: string): TaxonomyGroup | undefined {
 
 export interface TaxonomyFind {
   taxonomy: string
-  group: string
+  group: string | null
   entry: {label: string; desc: string}
 }
 
@@ -2515,4 +2565,4 @@ export function taxonomy_is_expanded(taxonomy: string, label: string): boolean {
 }
 
 // export const visible_modes = ['anonymization', 'normalization', 'correctannot', 'validate']
-export const visible_modes = ['correctannot_slo', 'correctannot_kost', 'correctannot_stikit']
+export const visible_modes = ['correctannot_slo', 'correctannot_kost', 'correctannot_stikit', 'correctannot_robust']

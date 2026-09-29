@@ -7,7 +7,7 @@ import * as record from '../record'
 
 import * as Manual from '../Doc/Manual'
 
-import {Taxonomy, config, label_order, LabelOrder, taxonomy_has_label, label_args, visible_modes} from './Config'
+import {Taxonomy, config, label_order, LabelOrder, taxonomy_has_label, label_args, visible_modes, headerless} from './Config'
 import {Severity, Rule, edge_check} from './Validate'
 import {init_pstore, anonymize, Pseudonyms, is_anon_label} from './Anonymization'
 import {configSwell} from './swellData'
@@ -225,7 +225,7 @@ export type Show =
   | 'target_text'
   | 'options'
 
-export type Mode = 'anonymization' | 'normalization' | 'correctannot' | 'correctannot_slo' | 'correctannot_kost' | 'correctannot_stikit'
+export type Mode = 'anonymization' | 'normalization' | 'correctannot' | 'correctannot_slo' | 'correctannot_kost' | 'correctannot_stikit' | 'correctannot_robust'
 
 export const modes: Record<Mode, Mode> = {
   anonymization: 'anonymization',
@@ -234,6 +234,7 @@ export const modes: Record<Mode, Mode> = {
   correctannot_slo: 'correctannot_slo',
   correctannot_kost: 'correctannot_kost',
   correctannot_stikit: 'correctannot_stikit',
+  correctannot_robust: 'correctannot_robust',
 }
 
 export function visible_button(mode: string): boolean {
@@ -247,6 +248,7 @@ export function mode_label(mode: Mode): string {
     [modes.correctannot_slo]: i18n.t('options.correction_annotation_Solar'),
     [modes.correctannot_kost]: i18n.t('options.correction_annotation_Kost'),
     [modes.correctannot_stikit]: i18n.t('options.correction_annotation_Stikit'),
+    [modes.correctannot_robust]: i18n.t('options.correction_annotation_Robust'),
     [modes.correctannot]: 'correction annotation',
   }[mode]
 }
@@ -477,6 +479,9 @@ export function modifySelection(store: Store<State>, ids: string[], value: boole
 
 export function minimizeTaxonomy(taxonomy: Taxonomy, selected: string[]) {
   taxonomy.forEach(taxGroup => {
+    if (headerless(taxGroup)) {
+      return
+    }
     taxGroup.entries.forEach(entry => {
       selected.forEach(selectedKey => {
         taxGroup.is_expanded = false
@@ -778,6 +783,7 @@ export const actionButtons: Record<Mode, ActionOnSelected[]> = {
   correctannot_slo: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
   correctannot_kost: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
   correctannot_stikit: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
+  correctannot_robust: ['prev', 'next', 'prev_mod', 'next_mod', 'group', 'orphan', 'auto' /*, 'revert'*/],
   anonymization: ['prev', 'next', 'prev_mod', 'next_mod'],
 }
 

@@ -863,6 +863,7 @@ export function View(store: Store<Model.State>, cms: Record<G.Side, CM.CMVN>): V
               {Model.visible_button(Model.modes.correctannot_slo.toString()) ? mode_switcher(Model.modes.correctannot_slo) : ''}
               {Model.visible_button(Model.modes.correctannot_kost.toString()) ? mode_switcher(Model.modes.correctannot_kost) : ''}
               {Model.visible_button(Model.modes.correctannot_stikit.toString()) ? mode_switcher(Model.modes.correctannot_stikit) : ''}
+              {Model.visible_button(Model.modes.correctannot_robust.toString()) ? mode_switcher(Model.modes.correctannot_robust) : ''}
               <hr />
               {toggle_button('graph')}
               {toggle_button('diff')}

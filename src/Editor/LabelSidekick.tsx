@@ -9,7 +9,7 @@ import * as record from '../record'
 import * as ReactUtils from '../ReactUtils'
 
 import * as Model from './Model'
-import {Taxonomy, TaxonomyGroup} from './Config'
+import {Taxonomy, TaxonomyGroup, headerless} from './Config'
 import { getI18n } from 'react-i18next';
 
 const i18n = getI18n()
@@ -181,7 +181,15 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
         <ul className="taxonomy" ref="taxonomy">
           {props.mode == Model.modes.anonymization &&
             selected.filter(isDigit).map(i => <li key={'d' + i}>{entry_span({ label: i + '', key: i + '', desc: ''})}</li>)}
-          {taxonomy.map((g, i) => (
+          {taxonomy.map((g, i) => headerless(g) ? (
+            <React.Fragment key={i}>
+              {g.entries.map((e, j) => (
+                <li ref={'tax_item' + c} key={j} title={e.desc}>
+                  {entry_span(e, c++)}
+                </li>
+              ))}
+            </React.Fragment>
+          ) : (
             <li key={i}>
               <b>
                 <span
